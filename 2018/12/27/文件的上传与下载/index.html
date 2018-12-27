@@ -1,0 +1,942 @@
+<!-- build time:Thu Dec 27 2018 15:19:29 GMT+0800 (CST) --><!DOCTYPE html><html lang="zh"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui"><meta name="renderer" content="webkit"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no,email=no,adress=no"><meta name="theme-color" content="#000000"><meta http-equiv="window-target" content="_top"><title>文件的上传与下载 | Hexo</title><meta name="description" content="文件上传1.传统方式&amp;lt;form id=&amp;quot;upload-form&amp;quot; action=&amp;quot;upload.php&amp;quot; method=&amp;quot;post&amp;quot; enctype=&amp;quot;multipart/form-data&amp;quot; &amp;gt; 　　　&amp;lt;input type=&amp;quot;file&amp;quot; id=&amp;quot;upload&amp;quot"><meta name="keywords" content="javascript"><meta property="og:type" content="article"><meta property="og:title" content="文件的上传与下载"><meta property="og:url" content="https://molly2molly.github.io/2018/12/27/文件的上传与下载/index.html"><meta property="og:site_name" content="张英姿的博客"><meta property="og:description" content="文件上传1.传统方式&amp;lt;form id=&amp;quot;upload-form&amp;quot; action=&amp;quot;upload.php&amp;quot; method=&amp;quot;post&amp;quot; enctype=&amp;quot;multipart/form-data&amp;quot; &amp;gt; 　　　&amp;lt;input type=&amp;quot;file&amp;quot; id=&amp;quot;upload&amp;quot"><meta property="og:locale" content="zh-Hans"><meta property="og:updated_time" content="2018-12-27T06:18:38.104Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="文件的上传与下载"><meta name="twitter:description" content="文件上传1.传统方式&amp;lt;form id=&amp;quot;upload-form&amp;quot; action=&amp;quot;upload.php&amp;quot; method=&amp;quot;post&amp;quot; enctype=&amp;quot;multipart/form-data&amp;quot; &amp;gt; 　　　&amp;lt;input type=&amp;quot;file&amp;quot; id=&amp;quot;upload&amp;quot"><link rel="canonical" href="https://molly2molly.github.io/2018/12/27/文件的上传与下载/index.html"><link rel="alternate" href="/atom.xml" title="张英姿的博客" type="application/atom+xml"><link rel="icon" href="/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"></head><body class="main-center theme-green" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="slimContent"><div class="navbar-header"><div class="profile-block text-center"><a id="avatar" href="https://github.com/molly2molly" target="_blank"><img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200"></a><h2 id="name" class="hidden-xs hidden-sm">张英姿</h2><h3 id="title" class="hidden-xs hidden-sm hidden-md">前端工程师</h3><small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 苏州, 中国</small></div><div class="search" id="search-form-wrap"><form class="search-form sidebar-form"><div class="input-group"><input type="text" class="search-form-input form-control" placeholder="Search"> <span class="input-group-btn"><button type="submit" class="search-form-submit btn btn-flat" onclick="return!1"><i class="icon icon-search"></i></button></span></div></form><div class="ins-search"><div class="ins-search-mask"></div><div class="ins-search-container"><div class="ins-input-wrapper"><input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech=""> <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="ins-section-wrapper"><div class="ins-section-container"></div></div></div></div></div><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button></div><nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation"><ul class="nav navbar-nav main-nav"><li class="menu-item menu-item-home"><a href="/."><i class="icon icon-home-fill"></i> <span class="menu-title">Home</span></a></li><li class="menu-item menu-item-archives"><a href="/archives"><i class="icon icon-archives-fill"></i> <span class="menu-title">Archives</span></a></li><li class="menu-item menu-item-categories"><a href="/categories"><i class="icon icon-folder"></i> <span class="menu-title">Categories</span></a></li><li class="menu-item menu-item-tags"><a href="/tags"><i class="icon icon-tags"></i> <span class="menu-title">Tags</span></a></li><li class="menu-item menu-item-repository"><a href="/repository"><i class="icon icon-project"></i> <span class="menu-title">Repository</span></a></li><li class="menu-item menu-item-books"><a href="/books"><i class="icon icon-book-fill"></i> <span class="menu-title">Books</span></a></li><li class="menu-item menu-item-links"><a href="/links"><i class="icon icon-friendship"></i> <span class="menu-title">Links</span></a></li><li class="menu-item menu-item-about"><a href="/about"><i class="icon icon-cup-fill"></i> <span class="menu-title">About</span></a></li></ul><ul class="social-links"><li><a href="https://github.com/molly2molly" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li></ul></nav></div></header><aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar"><div class="slimContent"><div class="widget"><h3 class="widget-title">Board</h3><div class="widget-body"><div id="board"><div class="content"><p>欢迎交流与分享经验!</p></div></div></div></div><div class="widget"><h3 class="widget-title">Categories</h3><div class="widget-body"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据可视化/">数据可视化</a><span class="category-list-count">1</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Tags</h3><div class="widget-body"><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/d3/">d3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-javascript/">es6 javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Tag Cloud</h3><div class="widget-body tagcloud"><a href="/tags/TCP/" style="font-size:13px">TCP</a> <a href="/tags/d3/" style="font-size:13px">d3</a> <a href="/tags/es6-javascript/" style="font-size:13px">es6 javascript</a> <a href="/tags/javascript/" style="font-size:14px">javascript</a> <a href="/tags/webpack/" style="font-size:13px">webpack</a></div></div><div class="widget"><h3 class="widget-title">Archive</h3><div class="widget-body"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Recent Posts</h3><div class="widget-body"><ul class="recent-post-list list-unstyled no-thumbnail"><li><div class="item-inner"><p class="item-category"><a class="category-link" href="/categories/javascript/">javascript</a></p><p class="item-title"><a href="/2018/12/27/MIME类型/" class="title">MIME类型</a></p><p class="item-date"><time datetime="2018-12-27T06:29:33.000Z" itemprop="datePublished">2018-12-27</time></p></div></li><li><div class="item-inner"><p class="item-category"><a class="category-link" href="/categories/javascript/">javascript</a></p><p class="item-title"><a href="/2018/12/27/文件的上传与下载/" class="title">文件的上传与下载</a></p><p class="item-date"><time datetime="2018-12-27T05:26:18.000Z" itemprop="datePublished">2018-12-27</time></p></div></li><li><div class="item-inner"><p class="item-category"><a class="category-link" href="/categories/javascript/">javascript</a></p><p class="item-title"><a href="/2018/12/21/ES6读书笔记/" class="title">ES6读书笔记</a></p><p class="item-date"><time datetime="2018-12-21T01:41:53.000Z" itemprop="datePublished">2018-12-21</time></p></div></li><li><div class="item-inner"><p class="item-category"><a class="category-link" href="/categories/http/">http</a></p><p class="item-title"><a href="/2018/12/19/图解TCP-IP阅读理解/" class="title">图解TCP_IP阅读理解</a></p><p class="item-date"><time datetime="2018-12-19T06:06:31.000Z" itemprop="datePublished">2018-12-19</time></p></div></li><li><div class="item-inner"><p class="item-category"><a class="category-link" href="/categories/javascript/">javascript</a></p><p class="item-title"><a href="/2018/12/17/webpack详解/" class="title">webpack详解</a></p><p class="item-date"><time datetime="2018-12-17T00:50:06.000Z" itemprop="datePublished">2018-12-17</time></p></div></li></ul></div></div></div></aside><main class="main" role="main"><div class="content"><article id="post-文件的上传与下载" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting"><div class="article-header"><h1 class="article-title" itemprop="name">文件的上传与下载</h1><div class="article-meta"><span class="article-date"><i class="icon icon-calendar-check"></i> <a href="/2018/12/27/文件的上传与下载/" class="article-date"><time datetime="2018-12-27T05:26:18.000Z" itemprop="datePublished">2018-12-27</time></a></span> <span class="article-category"><i class="icon icon-folder"></i> <a class="article-category-link" href="/categories/javascript/">javascript</a></span> <span class="article-tag"><i class="icon icon-tags"></i> <a class="article-tag-link" href="/tags/javascript/">javascript</a></span> <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/12/27/文件的上传与下载/#comments" class="article-comment-link">Comments</a></span></div></div><div class="article-entry marked-body" itemprop="articleBody"><h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>1.传统方式</p><pre><code>&lt;form id=&quot;upload-form&quot; action=&quot;upload.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot; &gt;
+　　　&lt;input type=&quot;file&quot; id=&quot;upload&quot; name=&quot;upload&quot; /&gt; &lt;br /&gt;
+　　　&lt;input type=&quot;submit&quot; value=&quot;Upload&quot; /&gt;
+&lt;/form&gt;
+</code></pre><p>2.iframe上传</p><p>用户点击submit的时候，动态插入一个iframe</p><pre><code>var form = $(&quot;#upload-form&quot;);
+form.on(&apos;submit&apos;,function() {
+　　// 此处动态插入iframe元素
+　　var seed = Math.floor(Math.random() * 1000);
+    var id = &quot;uploader-frame-&quot; + seed;
+    var callback = &quot;uploader-cb-&quot; + seed;
+    var iframe = $(&apos;&lt;iframe id=&quot;&apos;+id+&apos;&quot; name=&quot;&apos;+id+&apos;&quot; style=&quot;display:none;&quot;&gt;&apos;);
+    var url = form.attr(&apos;action&apos;);
+    form.attr(&apos;target&apos;, id).append(iframe).attr(&apos;action&apos;, url + &apos;?iframe=&apos; + callback);
+});
+</code></pre><p>最后一行，它为表单添加target属性。指向动态插入的iframe。这样上传结束后服务器将结果返回iframe窗口。所以当前页面不会跳转。其次，在它的action属性指定的上传网址的后面添加一个参数，使得服务器知道回调函数的名称。这样就能将服务器返回的信息，从iframe窗口传到上层页面。</p><p>服务器返回的信息应该如下：</p><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+　　window.top.window[&apos;callback&apos;](data);
+&lt;/script&gt;
+</code></pre><hr><pre><code>if (window.top!=window.self)  //判断是否是顶层窗口
+</code></pre><p>然后在当前网页中定义回调函数</p><pre><code>window[callback] = function(data){
+　　console.log(&apos;received callback:&apos;, data);
+　　iframe.remove(); //removing iframe
+　　form.removeAttr(&apos;target&apos;);
+　　form.attr(&apos;action&apos;, url);
+　　window[callback] = undefined; //removing callback
+};
+</code></pre><p>3.FormData</p><pre><code>&lt;progress id=&quot;uploadprogress&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;0&quot;&gt;0&lt;/progress&gt;
+
+form.on(&apos;submit&apos;,function() {
+　　// 此处进行ajax上传
+　　
+    // 检查是否支持FormData
+    if(window.FormData) {　
+    　　var formData = new FormData();
+
+    　　// 建立一个upload表单项，值为上传的文件
+    　　formData.append(&apos;upload&apos;, document.getElementById(&apos;upload&apos;).files[0]);
+    　　var xhr = new XMLHttpRequest();
+    　　xhr.open(&apos;POST&apos;, $(this).attr(&apos;action&apos;));
+    　　// 定义上传完成后的回调函数
+    　　xhr.onload = function () {
+    　　　　if (xhr.status === 200) {
+    　　　　　　console.log(&apos;上传成功&apos;);
+    　　　　} else {
+    　　　　　　console.log(&apos;出错了&apos;);
+    　　　　}
+    　　};
+    　　xhr.send(formData);
+    　　
+    　　xhr.upload.onprogress = function (event) {
+        　　if (event.lengthComputable) {
+        　　　　var complete = (event.loaded / event.total * 100 | 0);
+        　　　　var progress = document.getElementById(&apos;uploadprogress&apos;);
+        　　　　progress.value = progress.innerHTML = complete;
+        　　}
+        };
+
+    }
+});
+</code></pre><p>图片预览</p><pre><code>// 检查是否支持FileReader对象
+if (typeof FileReader != &apos;undefined&apos;) {
+　　var acceptedTypes = {
+　　　　&apos;image/png&apos;: true,
+　　　　&apos;image/jpeg&apos;: true,
+　　　　&apos;image/gif&apos;: true
+　　};
+　　if (acceptedTypes[document.getElementById(&apos;upload&apos;).files[0].type] === true) {
+　　　　var reader = new FileReader();
+　　　　reader.onload = function (event) {
+　　　　　　var image = new Image();
+　　　　　　image.src = event.target.result;
+　　　　　　image.width = 100;
+　　　　　　document.body.appendChild(image);
+　　　　};
+　　　　reader.readAsDataURL(document.getElementById(&apos;upload&apos;).files[0]);
+　　}
+}
+</code></pre><p>拖拽上传</p><pre><code>&lt;div id=&quot;holder&quot;&gt;&lt;/div&gt;
+
+#holder {
+　　border: 10px dashed #ccc;
+　　width: 300px;
+　　min-height: 300px;
+　　margin: 20px auto;
+}
+#holder.hover {
+　　border: 10px dashed #0c0;
+}
+
+// 检查浏览器是否支持拖放上传。
+if(&apos;draggable&apos; in document.createElement(&apos;span&apos;)){
+　　var holder = document.getElementById(&apos;holder&apos;);
+　　holder.ondragover = function () { this.className = &apos;hover&apos;; return false; };
+　　holder.ondragend = function () { this.className = &apos;&apos;; return false; };
+　　holder.ondrop = function (event) {
+　　　　event.preventDefault();
+　　　　this.className = &apos;&apos;;
+　　　　var files = event.dataTransfer.files;
+　　　　// do something with files
+　　};
+}
+</code></pre><h3 id="HTML5-大文件上传"><a href="#HTML5-大文件上传" class="headerlink" title="HTML5 大文件上传"></a><span style="color:red">HTML5 大文件上传</span></h3><h4 id="用到的库"><a href="#用到的库" class="headerlink" title="用到的库"></a>用到的库</h4><pre><code>File 文件
+FileRead 读取文件
+XMLHttpRequest 上传文件
+FormData 上传时所需数据
+spark-md5 用于MD5 HASH值计算(第三方插件）
+本次实现拖拽上传，用到了页面拖拽事件：ondragenter,ondragleave,ondragover,ondrop
+</code></pre><h4 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h4><pre><code>建立一个上传队列。
+通过拖拽获取得到文件。
+为每个文件添加各自的上传方法。
+秒传判断
+上传分片文件 （后台存放临时分片文件）
+合并文件
+添加文件到上传队列。
+</code></pre><h5 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h5><pre><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot;
+          content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .dropZone {
+            width: 300px;
+            height: 200px;
+            line-height: 200px;
+            margin: 10px auto;
+            border: 2px dashed #ccc;
+            color: #cccccc;
+            text-align: center;
+        }
+        .dropZone.dropOver {
+            border-color: #000;
+            color: #000;
+        }
+        button {
+            margin-right: 10px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;dropZone&quot; class=&quot;dropZone&quot;&gt; drop file&lt;/div&gt;
+&lt;div&gt;
+    &lt;h1&gt;fileList&lt;/h1&gt;
+    &lt;ul id=&quot;uploadList&quot;&gt;&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h4 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h4><pre><code>//md5
+!function (win, sparkMD5) {
+    let Md5File = function (options) {
+        this._init(options);
+        this.fileMd5Hash();
+    };
+    Md5File.prototype = {
+        _init: function (opts) {
+            this.file = opts.file;
+            this.fileSliceLength = opts.fileSliceLength || 1024 * 1024;
+            this.chunks = opts.chunks || 10;
+            this.chunkSize = parseInt(this.file.size / this.chunks, 10);
+            this.currentChunk = 0;
+            this.md5Complete = opts.md5Complete;
+            this.spark = new sparkMD5.ArrayBuffer();
+            this.sparks = [];
+        },
+        fileMd5Hash: function () {
+            this._readFileMd5Hash();
+        },
+        _readFileMd5Hash: function () {
+            let self = this;
+            console.group(&quot;currentChunk:&quot;, self.currentChunk,
+                &apos;chunkSize&apos;, self.chunkSize,
+                &apos;fileSize:&apos;, self.file.size,
+                &apos;fileSliceLength:&apos;, self.fileSliceLength);
+            let start = self.currentChunk * self.chunkSize;
+            let end = Math.min(start + self.chunkSize, self.file.size);
+            if (self.currentChunk &lt; self.chunks) {
+                end = start + self.fileSliceLength;
+            }
+            console.log(&apos;start:&apos;, start, &apos;end:&apos;, end, &apos;get chunk:&apos;, end - start);
+            console.groupEnd();
+            let fileReader = new FileReader();
+            fileReader.onload = function (e) {
+                let spark = new sparkMD5.ArrayBuffer();
+                spark.append(e.target.result);
+                let tempSpark = spark.end();
+                console.log(tempSpark);
+                self.sparks.push(tempSpark);
+                self.currentChunk++;
+                if (self.currentChunk &lt; self.chunks) {
+                    self._readFileMd5Hash();
+                } else {
+                    let endSparkStr = self.sparks.join(&apos;&apos;);
+                    console.log(endSparkStr);
+                    self.md5Complete &amp;&amp; typeof self.md5Complete == &apos;function&apos; &amp;&amp; self.md5Complete(endSparkStr);
+                }
+                /*                    self.spark.append(e.target.result);
+                 self.currentChunk++;
+                 if (self.currentChunk &lt; self.chunks) {
+                 self._readFileMd5Hash();
+                 } else {
+                 self.md5Complete &amp;&amp; typeof self.md5Complete == &apos;function&apos; &amp;&amp; self.md5Complete(self.spark.end());
+                 }*/
+            };
+            fileReader.readAsArrayBuffer(self.file.slice(start, end));
+        }
+    };
+    win.md5File = function (options) {
+        return new Md5File(options);
+    }
+}(window, SparkMD5);    
+</code></pre><h4 id="上传类"><a href="#上传类" class="headerlink" title="上传类"></a>上传类</h4><pre><code>//文件上传类
+!function (win) {
+    &apos;use strict&apos;;
+    let FileUpload = function (options) {
+        if (typeof options != &apos;object&apos;) {
+            throw Error(&apos;options not is object&apos;);
+        }
+        this.init(options);
+        if (this.autoUpload) {
+            this.start();
+        }
+    };
+    FileUpload.prototype = {
+        init: function (opts) {
+            this.file = opts.file;
+            this.url = opts.url;
+            this.compileFileUrl = opts.compileFileUrl;
+            this.autoUpload = opts.autoUpload || 0;
+            this.chunk = opts.chunk || (10 * 1024 * 1024);
+            this.chunks = Math.ceil(this.file.size / this.chunk);
+            this.currentChunk = 0;
+            this.taskName = opts.taskName || win.uuid();
+            this.isUploading = false;
+            this.isUploaded = false;
+            this.upProgress = opts.upProgress; //上传进度
+            this.upComplete = opts.upComplete; //上传完成
+            this.timeHandle = opts.timeHandle; // 时间处理
+            this.timeInfo = {
+                h: 0,
+                m: 0,
+                s: 0
+            };
+            this.md5FileHash = null;
+            this.remoteMd5FileHash = opts.remoteMd5FileHash; //远程对比文件,是http请求函数
+            this.isSendCompleteFile = opts.isSendCompleteFile || 0; //是否发送合并文件指令
+            return this;
+        },
+        start: function () {
+            let self = this;
+            //秒传判断
+            if (!self.md5FileHash) {
+                win.md5File({
+                    file: self.file,
+                    md5Complete: function (hash) {
+                        self.md5FileHash = hash;
+                        //后台进行判断hash值是否一致，如何一致则直接上传完成。
+                        if (self.remoteMd5FileHash &amp;&amp; typeof self.remoteMd5FileHash == &apos;function&apos;) {
+                            self.remoteMd5FileHash(self.file.name, self.md5FileHash, function (result) {
+                                if (result) {
+                                    self.initInterval();
+                                    self.isUploaded = true;
+                                    self.isUploading = true;
+                                    self.upProgress &amp;&amp; typeof self.upProgress == &apos;function&apos; &amp;&amp; self.upProgress(1, 1);
+                                    if (self.upComplete &amp;&amp; typeof self.upComplete == &apos;function&apos;) {
+                                        if (self.time) win.clearInterval(self.time);
+                                        self.upComplete();
+                                    }
+                                } else {
+                                    if (!self.isUploading &amp;&amp; !self.isUploaded) {
+                                        self.initInterval();
+                                        self._upload();
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+            } else {
+                //上传
+                if (!self.isUploading &amp;&amp; !self.isUploaded) {
+                    self.initInterval();
+                    self._upload();
+                }
+            }
+        },
+        pause: function () {
+            if (this.isUploading) {
+                this.xhr &amp;&amp; this.xhr.abort();
+                this.isUploading = false;
+                if (this.time) win.clearInterval(this.time);
+            }
+        },
+        _initXhr: function () {
+            let self = this;
+            self.xhr = new XMLHttpRequest();
+            self.xhrLoad = function () {
+                if (self.end == self.file.size) {
+                    self.isUploaded = true;
+                    if (self.upComplete &amp;&amp; typeof self.upComplete == &apos;function&apos;) {
+                        if (self.time) win.clearInterval(self.time);
+                        self.upComplete();
+                    }
+                    self.isSendCompleteFile &amp;&amp; self.compileFile();
+                } else {
+                    if (self.upProgress &amp;&amp; typeof self.upProgress == &apos;function&apos;) {
+                        self.upProgress((self.currentChunk + 1), self.chunks);
+                    }
+                    self.currentChunk++;
+                    self._upload();
+                }
+            };
+            self.xhrError = function () {
+                console.log(&apos;xhr error&apos;);
+            };
+            self.xhrAbort = function () {
+                console.log(&apos;xhr abort&apos;);
+            };
+            self.xhr.onload = this.xhrLoad;
+            self.xhr.onerror = this.xhrError;
+            self.xhr.onabort = this.xhrAbort;
+        },
+        _upload: function () {
+            let self = this;
+            self.isUploading = true;
+            self._initXhr();
+            self.xhr.open(&apos;POST&apos;, self.url);
+            //计算上传开始位置或结束位置
+            self.begin = self.currentChunk * self.chunk;
+            self.end = Math.min((self.begin + self.chunk), self.file.size);
+            let blob = self.file.slice(self.begin, self.end, {type: &apos;text/plain&apos;});
+            let formData = new FormData();
+            let tempFileName = &apos;temp-&apos; + self.currentChunk + &apos;-&apos; + self.taskName;
+            formData.append(&apos;fileData&apos;, blob, tempFileName);
+            formData.append(&apos;tempFileName&apos;, tempFileName);
+            formData.append(&apos;taskName&apos;, self.taskName);//用于后台进行判断如果此片已存在则进行删除。
+            formData.append(&apos;fileName&apos;, self.file.name);
+            formData.append(&apos;position&apos;, self.begin);
+            formData.append(&apos;chunkIndex&apos;, (self.currentChunk + 1));
+            formData.append(&apos;chunks&apos;, self.chunks);
+            self.xhr.send(formData);
+        },
+        compileFile: function () {
+            let self = this;
+            self._initXhr();
+            self.xhrLoad = function () {
+                console.log(self.xhr.responseText);
+            };
+            self.xhr.onload = self.xhrLoad;
+            self.xhr.open(&apos;POST&apos;, self.compileFileUrl);
+            let formData = new FormData();
+            formData.append(&quot;fileName&quot;, (self.file.name));
+            formData.append(&apos;taskName&apos;, self.taskName);
+            self.xhr.send(formData);
+        },
+        initInterval: function () {
+            let self = this;
+            if (self.time) win.clearInterval(self.time);
+            self.time = win.setInterval(function () {
+                self.timeInfo.s++;
+                if (self.timeInfo.s == 60) {
+                    self.timeInfo.s = 0;
+                    self.timeInfo.m++;
+                    if (self.timeInfo.m == 60) {
+                        self.timeInfo.m = 0;
+                        self.timeInfo.h++;
+                    }
+                }
+                self.timeHandle &amp;&amp; self.timeHandle(self.formatStr());
+            }, 1000);
+        },
+        formatStr: function () {
+            let _ = this,
+                sY = (_.timeInfo.h &lt; 10) ? &apos;0&apos; + _.timeInfo.h : _.timeInfo.h,
+                sM = (_.timeInfo.m &lt; 10) ? &apos;0&apos; + _.timeInfo.m : _.timeInfo.m,
+                sS = (_.timeInfo.s &lt; 10) ? &apos;0&apos; + _.timeInfo.s : _.timeInfo.s;
+            return sY + &apos;:&apos; + sM + &apos;:&apos; + sS;
+        }
+    };
+    win.fileUpload = function (options) {
+        return new FileUpload(options);
+    };
+}(window);
+</code></pre><h4 id="拖曳"><a href="#拖曳" class="headerlink" title="拖曳"></a>拖曳</h4><pre><code>//拖拽
+!function () {
+    &apos;use strict&apos;;
+    let dropZone = document.querySelector(&apos;#dropZone&apos;);
+    let uploadList = document.querySelector(&apos;#uploadList&apos;);
+    dropZone.ondragenter = function () {
+        this.className = &apos;dropZone dropOver&apos;;
+    };
+    dropZone.ondragleave = function () {
+        this.className = &apos;dropZone&apos;;
+        return false;
+    };
+    dropZone.ondragover = function () {
+        return false;
+    };
+    let upComplete = function () {
+        console.log(&apos;file up complete&apos;);
+        this.progressDivIng.style.width = &apos;100%&apos;;
+    };
+    let upProgress = function (chunkIndex, chunks) {
+        console.log(&apos;up progress:&apos;, chunkIndex, chunks);
+        //console.log(this.progressDivIng);
+        this.progressDivIng.style.width = (chunkIndex / chunks) * 100 + &apos;%&apos;;
+    };
+    let timeHandle = function (timeStr) {
+        this.timeSpan.innerText = timeStr;
+    };
+    let remoteMd5FileHash = function (fileName, md5FileHash, callback) {
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            let data = xhr.responseText;
+            callback &amp;&amp; callback(data == &apos;ok&apos;);
+        };
+        xhr.open(&apos;POST&apos;, &apos;/fileHash&apos;);
+        let formData = new FormData();
+        formData.append(&quot;fileName&quot;, fileName);
+        formData.append(&apos;md5Hash&apos;, md5FileHash);
+        xhr.send(formData);
+    };
+    let tasks = {};
+    let uploadHandler = function (files) {
+        let x = 0;
+        for (x; x &lt; files.length; x++) {
+            let taskName = window.uuid();
+            let file = files[x];
+            tasks[taskName] = window.fileUpload({
+                file: files[x],
+                url: &apos;/upload&apos;,
+                compileFileUrl: &apos;/compileFile&apos;,
+                autoUpload: 0,
+                isSendCompleteFile: 1,
+                taskName: taskName,
+                upProgress: upProgress,
+                upComplete: upComplete,
+                timeHandle: timeHandle,
+                remoteMd5FileHash: remoteMd5FileHash
+            });
+            let li = document.createElement(&apos;li&apos;);
+            let startBtn = document.createElement(&apos;button&apos;);
+            startBtn.innerText = &apos;START&apos;;
+            startBtn.onclick = function () {
+                console.log(&apos;start&apos;);
+                tasks[taskName].start();
+            };
+            let endBtn = document.createElement(&apos;button&apos;);
+            endBtn.innerText = &apos;PAUSE&apos;;
+            endBtn.onclick = function () {
+                tasks[taskName].pause();
+            };
+            let cancelBtn = document.createElement(&apos;button&apos;);
+            cancelBtn.innerText = &apos;CANCEL&apos;;
+            cancelBtn.onclick = function () {
+                let currentUpTask = tasks[taskName];
+                if (currentUpTask.isUploaded) {
+                    uploadList.removeChild(document.getElementById(taskName));
+                } else {
+                    //TODO:向后台发送取消请求
+                    currentUpTask.pause();
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = function () {
+                        uploadList.removeChild(document.getElementById(taskName));
+                    };
+                    xhr.open(&apos;GET&apos;, &apos;/cancel&apos;);
+                    let formData = new FormData();
+                    formData.append(&apos;taskName&apos;, taskName);
+                    xhr.send(formData);
+                }
+            };
+            let progressDiv = document.createElement(&apos;div&apos;);
+            progressDiv.style.border = &apos;1px solid #ccc&apos;;
+            progressDiv.style.height = &apos;10px&apos;;
+            progressDiv.style.marginLeft = &apos;5px&apos;;
+            progressDiv.style.marginRight = &apos;5px&apos;;
+            let progressDivIng = document.createElement(&apos;div&apos;);
+            progressDivIng.style.background = &apos;red&apos;;
+            progressDivIng.style.width = &apos;0px&apos;;
+            progressDivIng.style.height = &apos;10px&apos;;
+            progressDiv.appendChild(progressDivIng);
+            let timeSpan = document.createElement(&apos;span&apos;);
+            timeSpan.innerText = &apos;00:00:00&apos;;
+            timeSpan.style.paddingLeft = &apos;10px&apos;;
+            timeSpan.style.paddingRight = &apos;10px&apos;;
+            li.innerHTML = file.name;
+            li.setAttribute(&apos;id&apos;, taskName);
+            li.appendChild(timeSpan);
+            li.appendChild(startBtn);
+            li.appendChild(endBtn);
+            li.appendChild(cancelBtn);
+            li.appendChild(progressDiv);
+            uploadList.appendChild(li);
+            tasks[taskName].progressDivIng = progressDivIng;
+            tasks[taskName].timeSpan = timeSpan;
+        }
+    };
+    let acceptFile = function (file) {
+        let rExt = /\.\w+$/;
+        return rExt.exec(file.name) &amp;&amp; (file.size || file.type);
+    };
+    dropZone.ondrop = function (e) {
+        e.preventDefault();
+        let files = e.dataTransfer.files;
+        let newFiles = [];
+        for (let i = 0; i &lt; files.length; i++) {
+            let file = files[i];
+            if (acceptFile(file)) {
+                newFiles.push(file);
+            }
+        }
+        uploadHandler(newFiles);
+        //uploadHandler(e.dataTransfer.files);
+    };
+}();
+</code></pre><p>检查浏览器是否完全支持 File API</p><pre><code>// Check for the various File API support.
+if (window.File &amp;&amp; window.FileReader &amp;&amp; window.FileList &amp;&amp; window.Blob) {
+  // Great success! All the File APIs are supported.
+} else {
+  alert(&apos;The File APIs are not fully supported in this browser.&apos;);
+}
+</code></pre><p>使用表单输入进行选择</p><pre><code>&lt;input type=&quot;file&quot; id=&quot;files&quot; name=&quot;files[]&quot; multiple /&gt;
+&lt;output id=&quot;list&quot;&gt;&lt;/output&gt;
+
+&lt;script&gt;
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      output.push(&apos;&lt;li&gt;&lt;strong&gt;&apos;, escape(f.name), &apos;&lt;/strong&gt; (&apos;, f.type || &apos;n/a&apos;, &apos;) - &apos;,
+                  f.size, &apos; bytes, last modified: &apos;,
+                  f.lastModifiedDate.toLocaleDateString(), &apos;&lt;/li&gt;&apos;);
+    }
+    document.getElementById(&apos;list&apos;).innerHTML = &apos;&lt;ul&gt;&apos; + output.join(&apos;&apos;) + &apos;&lt;/ul&gt;&apos;;
+  }
+
+  document.getElementById(&apos;files&apos;).addEventListener(&apos;change&apos;, handleFileSelect, false);
+&lt;/script&gt;
+</code></pre><p>使用拖放操作进行选择</p><pre><code>&lt;div id=&quot;drop_zone&quot;&gt;Drop files here&lt;/div&gt;
+&lt;output id=&quot;list&quot;&gt;&lt;/output&gt;
+
+&lt;script&gt;
+  function handleFileSelect(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+
+    var files = evt.dataTransfer.files; // FileList object.
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      output.push(&apos;&lt;li&gt;&lt;strong&gt;&apos;, escape(f.name), &apos;&lt;/strong&gt; (&apos;, f.type || &apos;n/a&apos;, &apos;) - &apos;,
+                  f.size, &apos; bytes, last modified: &apos;,
+                  f.lastModifiedDate.toLocaleDateString(), &apos;&lt;/li&gt;&apos;);
+    }
+    document.getElementById(&apos;list&apos;).innerHTML = &apos;&lt;ul&gt;&apos; + output.join(&apos;&apos;) + &apos;&lt;/ul&gt;&apos;;
+  }
+
+  function handleDragOver(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    evt.dataTransfer.dropEffect = &apos;copy&apos;; // Explicitly show this is a copy.
+  }
+
+  // Setup the dnd listeners.
+  var dropZone = document.getElementById(&apos;drop_zone&apos;);
+  dropZone.addEventListener(&apos;dragover&apos;, handleDragOver, false);
+  dropZone.addEventListener(&apos;drop&apos;, handleFileSelect, false);
+&lt;/script&gt;
+</code></pre><p>FileReader 包括四个异步读取文件的选项：</p><p>FileReader.readAsBinaryString(Blob|File) - result 属性将包含二进制字符串形式的 file/blob 数据。每个字节均由一个 [0..255] 范围内的整数表示。</p><p>FileReader.readAsText(Blob|File, opt_encoding) - result 属性将包含文本字符串形式的 file/blob 数据。该字符串在默认情况下采用“UTF-8”编码。使用可选编码参数可指定其他格式。</p><p>FileReader.readAsDataURL(Blob|File) - result 属性将包含编码为数据网址的 file/blob 数据。</p><p>FileReader.readAsArrayBuffer(Blob|File) - result 属性将包含 ArrayBuffer 对象形式的 file/blob 数据。</p><p>对您的 FileReader 对象调用其中某一种读取方法后，可使用 onloadstart、onprogress、onload、onabort、onerror 和 onloadend 跟踪其进度。</p><p>分割文件</p><p>在某些情况下，将整个文件读取到内存中并不是最好的选择。例如，您要编写一个异步文件上传器。要提高上传速度，一种可行的方法是以彼此独立的字节范围块读取和发送文件。然后，由服务器组件负责按正确顺序重建文件。</p><h4 id="FormData详解"><a href="#FormData详解" class="headerlink" title="FormData详解"></a>FormData详解</h4><p>FormData对象用以将数据编译成键值对，以便用XMLHttpRequest来发送数据。</p><p>如果表单 enctype 设置为 multipart/form-data , 则会使用表单的 submit() 方法来发送数据。</p><pre><code>var formData = new FormData();
+
+formData.append(&quot;username&quot;,&quot;Zhang Yingzi&quot;);
+formData.append(&quot;account&quot;,123456); // 会被转化成字符串
+
+formData.append(&quot;userfile&quot;, fileInputElement,files[0]);
+
+var content = &quot;&lt;div&gt;Hey Guys!&lt;/div&gt;&quot;;
+var blob = new Blob([content],{type:&quot;text/html&quot;});
+formData.append(&quot;webfile&quot;, blob);
+
+var request = new XMLHttpRequest();
+request.open(&quot;POST&quot;, &quot;http://sample.com/action.php&quot;);
+request.send(formData);
+</code></pre><p>####通过HTML表单创建FormData对象</p><pre><code>var formData = new FormData(someFormElement);
+</code></pre><p>####使用FormData对象上传文件</p><pre><code>&lt;form enctype=&quot;multipart/form-data&quot; method=&quot;post&quot; name=&quot;fileinfo&quot;&gt;
+  &lt;label&gt;Your email address:&lt;/label&gt;
+  &lt;input type=&quot;email&quot; autocomplete=&quot;on&quot; autofocus name=&quot;userid&quot; placeholder=&quot;email&quot; required size=&quot;32&quot; maxlength=&quot;64&quot; /&gt;&lt;br /&gt;
+  &lt;label&gt;Custom file label:&lt;/label&gt;
+  &lt;input type=&quot;text&quot; name=&quot;filelabel&quot; size=&quot;12&quot; maxlength=&quot;32&quot; /&gt;&lt;br /&gt;
+  &lt;label&gt;File to stash:&lt;/label&gt;
+  &lt;input type=&quot;file&quot; name=&quot;file&quot; required /&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Stash the file!&quot; /&gt;
+&lt;/form&gt;
+&lt;div&gt;&lt;/div&gt;
+
+var form = document.forms.namedItem(&quot;fileinfo&quot;);
+form.addEventListener(&apos;submit&apos;, function(ev) {
+
+  var oOutput = document.querySelector(&quot;div&quot;),
+      oData = new FormData(form);
+
+  oData.append(&quot;CustomField&quot;, &quot;This is some extra data&quot;);
+
+  var oReq = new XMLHttpRequest();
+  oReq.open(&quot;POST&quot;, &quot;stash.php&quot;, true);
+  oReq.onload = function(oEvent) {
+    if (oReq.status == 200) {
+      oOutput.innerHTML = &quot;Uploaded!&quot;;
+    } else {
+      oOutput.innerHTML = &quot;Error &quot; + oReq.status + &quot; occurred when trying to upload your file.&lt;br \/&gt;&quot;;
+    }
+  };
+
+  oReq.send(oData);
+  ev.preventDefault();
+}, false);
+</code></pre><p>你还可以直接向FormData对象附加File或Blob类型的文件，如下所示：</p><pre><code>data.append(&quot;myfile&quot;, myBlob, &quot;filename.txt&quot;);
+</code></pre><p>使用append()方法时，可以通过第三个可选参数设置发送请求的头 Content-Disposition 指定文件名。如果不指定文件名（或者不支持该参数时），将使用名字“blob”。</p><p>如果你设置正确的配置项，你也可以通过jQuery来使用FormData对象：</p><pre><code>var fd = new FormData(document.querySelector(&quot;form&quot;));
+fd.append(&quot;CustomField&quot;, &quot;This is some extra data&quot;);
+$.ajax({
+  url: &quot;stash.php&quot;,
+  type: &quot;POST&quot;,
+  data: fd,
+  processData: false,  // 不处理数据
+  contentType: false   // 不设置内容类型
+});
+</code></pre><p>使用 FormData api 虽然是最简单和最快速的上传表单和文件的方法，但它的缺点也很明显，就是它不能被字符串化。</p><p>不使用FormData api 的情况下，可以通过使用FileReader api来使用ajax上传。</p><p>一个form有4种发送方式:</p><pre><code>1.method = POST , enctype = application/x-www-form-urlencoded (default);
+
+2.method = POST , enctype = text/plain;
+
+3.method = POST , enctype = multipart/form-data;
+
+4.method = GET , enctype 标签将会被忽略
+</code></pre><p>假设一个form有2个字段 foo 和 baz.</p><p>第一种发送方式：</p><pre><code>Content-Type: application/x-www-form-urlencoded
+
+foo=bar&amp;baz=The+first+line.%0D%0AThe+second+line.%0D%0A
+Method: POST; Encoding type: text/plain:
+</code></pre><p>第二种发送方式：</p><pre><code>Content-Type: text/plain
+
+foo=bar
+baz=The first line.
+The second line.
+</code></pre><p>第三种发送方式</p><pre><code>Content-Type: multipart/form-data; boundary=---------------------------314911788813839
+
+-----------------------------314911788813839
+Content-Disposition: form-data; name=&quot;foo&quot;
+
+bar
+-----------------------------314911788813839
+Content-Disposition: form-data; name=&quot;baz&quot;
+
+The first line.
+The second line.
+
+-----------------------------314911788813839--
+</code></pre><p>第四种发送方式会把下面的字段添加到url尾部</p><pre><code>?foo=bar&amp;baz=The%20first%20line.%0AThe%20second%20line.
+</code></pre><p>使用 pure ajax 的一个小示例框架</p><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+&lt;title&gt;Sending forms with pure AJAX &amp;ndash; MDN&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+&quot;use strict&quot;;
+
+/*\
+|*|
+|*|  :: XMLHttpRequest.prototype.sendAsBinary() Polyfill ::
+|*|
+|*|  https://developer.mozilla.org/en-US/docs/DOM/XMLHttpRequest#sendAsBinary()
+\*/
+
+if (!XMLHttpRequest.prototype.sendAsBinary) {
+  XMLHttpRequest.prototype.sendAsBinary = function(sData) {
+    var nBytes = sData.length, ui8Data = new Uint8Array(nBytes);
+    for (var nIdx = 0; nIdx &lt; nBytes; nIdx++) {
+      ui8Data[nIdx] = sData.charCodeAt(nIdx) &amp; 0xff;
+    }
+    /* send as ArrayBufferView...: */
+    this.send(ui8Data);
+    /* ...or as ArrayBuffer (legacy)...: this.send(ui8Data.buffer); */
+  };
+}
+
+/*\
+|*|
+|*|  :: AJAX Form Submit Framework ::
+|*|
+|*|  https://developer.mozilla.org/en-US/docs/DOM/XMLHttpRequest/Using_XMLHttpRequest
+|*|
+|*|  This framework is released under the GNU Public License, version 3 or later.
+|*|  https://www.gnu.org/licenses/gpl-3.0-standalone.html
+|*|
+|*|  Syntax:
+|*|
+|*|   AJAXSubmit(HTMLFormElement);
+\*/
+
+var AJAXSubmit = (function () {
+
+  function ajaxSuccess () {
+    /* console.log(&quot;AJAXSubmit - Success!&quot;); */
+    console.log(this.responseText);
+    /* you can get the serialized data through the &quot;submittedData&quot; custom property: */
+    /* console.log(JSON.stringify(this.submittedData)); */
+  }
+
+  function submitData (oData) {
+    /* the AJAX request... */
+    var oAjaxReq = new XMLHttpRequest();
+    oAjaxReq.submittedData = oData;
+    oAjaxReq.onload = ajaxSuccess;
+    if (oData.technique === 0) {
+      /* method is GET */
+      oAjaxReq.open(&quot;get&quot;, oData.receiver.replace(/(?:\?.*)?$/,
+          oData.segments.length &gt; 0 ? &quot;?&quot; + oData.segments.join(&quot;&amp;&quot;) : &quot;&quot;), true);
+      oAjaxReq.send(null);
+    } else {
+      /* method is POST */
+      oAjaxReq.open(&quot;post&quot;, oData.receiver, true);
+      if (oData.technique === 3) {
+        /* enctype is multipart/form-data */
+        var sBoundary = &quot;---------------------------&quot; + Date.now().toString(16);
+        oAjaxReq.setRequestHeader(&quot;Content-Type&quot;, &quot;multipart\/form-data; boundary=&quot; + sBoundary);
+        oAjaxReq.sendAsBinary(&quot;--&quot; + sBoundary + &quot;\r\n&quot; +
+            oData.segments.join(&quot;--&quot; + sBoundary + &quot;\r\n&quot;) + &quot;--&quot; + sBoundary + &quot;--\r\n&quot;);
+      } else {
+        /* enctype is application/x-www-form-urlencoded or text/plain */
+        oAjaxReq.setRequestHeader(&quot;Content-Type&quot;, oData.contentType);
+        oAjaxReq.send(oData.segments.join(oData.technique === 2 ? &quot;\r\n&quot; : &quot;&amp;&quot;));
+      }
+    }
+  }
+
+  function processStatus (oData) {
+    if (oData.status &gt; 0) { return; }
+    /* the form is now totally serialized! do something before sending it to the server... */
+    /* doSomething(oData); */
+    /* console.log(&quot;AJAXSubmit - The form is now serialized. Submitting...&quot;); */
+    submitData (oData);
+  }
+
+  function pushSegment (oFREvt) {
+    this.owner.segments[this.segmentIdx] += oFREvt.target.result + &quot;\r\n&quot;;
+    this.owner.status--;
+    processStatus(this.owner);
+  }
+
+  function plainEscape (sText) {
+    /* How should I treat a text/plain form encoding?
+       What characters are not allowed? this is what I suppose...: */
+    /* &quot;4\3\7 - Einstein said E=mc2&quot; ----&gt; &quot;4\\3\\7\ -\ Einstein\ said\ E\=mc2&quot; */
+    return sText.replace(/[\s\=\\]/g, &quot;\\$&amp;&quot;);
+  }
+
+  function SubmitRequest (oTarget) {
+    var nFile, sFieldType, oField, oSegmReq, oFile, bIsPost = oTarget.method.toLowerCase() === &quot;post&quot;;
+    /* console.log(&quot;AJAXSubmit - Serializing form...&quot;); */
+    this.contentType = bIsPost &amp;&amp; oTarget.enctype ? oTarget.enctype : &quot;application\/x-www-form-urlencoded&quot;;
+    this.technique = bIsPost ?
+        this.contentType === &quot;multipart\/form-data&quot; ? 3 : this.contentType === &quot;text\/plain&quot; ? 2 : 1 : 0;
+    this.receiver = oTarget.action;
+    this.status = 0;
+    this.segments = [];
+    var fFilter = this.technique === 2 ? plainEscape : escape;
+    for (var nItem = 0; nItem &lt; oTarget.elements.length; nItem++) {
+      oField = oTarget.elements[nItem];
+      if (!oField.hasAttribute(&quot;name&quot;)) { continue; }
+      sFieldType = oField.nodeName.toUpperCase() === &quot;INPUT&quot; ? oField.getAttribute(&quot;type&quot;).toUpperCase() : &quot;TEXT&quot;;
+      if (sFieldType === &quot;FILE&quot; &amp;&amp; oField.files.length &gt; 0) {
+        if (this.technique === 3) {
+          /* enctype is multipart/form-data */
+          for (nFile = 0; nFile &lt; oField.files.length; nFile++) {
+            oFile = oField.files[nFile];
+            oSegmReq = new FileReader();
+            /* (custom properties:) */
+            oSegmReq.segmentIdx = this.segments.length;
+            oSegmReq.owner = this;
+            /* (end of custom properties) */
+            oSegmReq.onload = pushSegment;
+            this.segments.push(&quot;Content-Disposition: form-data; name=\&quot;&quot; +
+                oField.name + &quot;\&quot;; filename=\&quot;&quot; + oFile.name +
+                &quot;\&quot;\r\nContent-Type: &quot; + oFile.type + &quot;\r\n\r\n&quot;);
+            this.status++;
+            oSegmReq.readAsBinaryString(oFile);
+          }
+        } else {
+          /* enctype is application/x-www-form-urlencoded or text/plain or
+             method is GET: files will not be sent! */
+          for (nFile = 0; nFile &lt; oField.files.length;
+              this.segments.push(fFilter(oField.name) + &quot;=&quot; + fFilter(oField.files[nFile++].name)));
+        }
+      } else if ((sFieldType !== &quot;RADIO&quot; &amp;&amp; sFieldType !== &quot;CHECKBOX&quot;) || oField.checked) {
+        /* NOTE: this will submit _all_ submit buttons. Detecting the correct one is non-trivial. */
+        /* field type is not FILE or is FILE but is empty */
+        this.segments.push(
+          this.technique === 3 ? /* enctype is multipart/form-data */
+            &quot;Content-Disposition: form-data; name=\&quot;&quot; + oField.name + &quot;\&quot;\r\n\r\n&quot; + oField.value + &quot;\r\n&quot;
+          : /* enctype is application/x-www-form-urlencoded or text/plain or method is GET */
+            fFilter(oField.name) + &quot;=&quot; + fFilter(oField.value)
+        );
+      }
+    }
+    processStatus(this);
+  }
+
+  return function (oFormElement) {
+    if (!oFormElement.action) { return; }
+    new SubmitRequest(oFormElement);
+  };
+
+})();
+
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;Sending forms with pure AJAX&lt;/h1&gt;
+
+&lt;h2&gt;Using the GET method&lt;/h2&gt;
+
+&lt;form action=&quot;register.php&quot; method=&quot;get&quot; onsubmit=&quot;AJAXSubmit(this); return false;&quot;&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Registration example&lt;/legend&gt;
+    &lt;p&gt;
+      First name: &lt;input type=&quot;text&quot; name=&quot;firstname&quot; /&gt;&lt;br /&gt;
+      Last name: &lt;input type=&quot;text&quot; name=&quot;lastname&quot; /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+    &lt;/p&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;h2&gt;Using the POST method&lt;/h2&gt;
+&lt;h3&gt;Enctype: application/x-www-form-urlencoded (default)&lt;/h3&gt;
+
+&lt;form action=&quot;register.php&quot; method=&quot;post&quot; onsubmit=&quot;AJAXSubmit(this); return false;&quot;&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Registration example&lt;/legend&gt;
+    &lt;p&gt;
+      First name: &lt;input type=&quot;text&quot; name=&quot;firstname&quot; /&gt;&lt;br /&gt;
+      Last name: &lt;input type=&quot;text&quot; name=&quot;lastname&quot; /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+    &lt;/p&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;h3&gt;Enctype: text/plain&lt;/h3&gt;
+
+&lt;form action=&quot;register.php&quot; method=&quot;post&quot; enctype=&quot;text/plain&quot;
+    onsubmit=&quot;AJAXSubmit(this); return false;&quot;&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Registration example&lt;/legend&gt;
+    &lt;p&gt;
+      Your name: &lt;input type=&quot;text&quot; name=&quot;user&quot; /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      Your message:&lt;br /&gt;
+      &lt;textarea name=&quot;message&quot; cols=&quot;40&quot; rows=&quot;8&quot;&gt;&lt;/textarea&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+    &lt;/p&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;h3&gt;Enctype: multipart/form-data&lt;/h3&gt;
+
+&lt;form action=&quot;register.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;
+    onsubmit=&quot;AJAXSubmit(this); return false;&quot;&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Upload example&lt;/legend&gt;
+    &lt;p&gt;
+      First name: &lt;input type=&quot;text&quot; name=&quot;firstname&quot; /&gt;&lt;br /&gt;
+      Last name: &lt;input type=&quot;text&quot; name=&quot;lastname&quot; /&gt;&lt;br /&gt;
+      Sex:
+      &lt;input id=&quot;sex_male&quot; type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;male&quot; /&gt;
+      &lt;label for=&quot;sex_male&quot;&gt;Male&lt;/label&gt;
+      &lt;input id=&quot;sex_female&quot; type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;female&quot; /&gt;
+      &lt;label for=&quot;sex_female&quot;&gt;Female&lt;/label&gt;&lt;br /&gt;
+      Password: &lt;input type=&quot;password&quot; name=&quot;secret&quot; /&gt;&lt;br /&gt;
+      What do you prefer:
+      &lt;select name=&quot;image_type&quot;&gt;
+        &lt;option&gt;Books&lt;/option&gt;
+        &lt;option&gt;Cinema&lt;/option&gt;
+        &lt;option&gt;TV&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      Post your photos:
+      &lt;input type=&quot;file&quot; multiple name=&quot;photos[]&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;input id=&quot;vehicle_bike&quot; type=&quot;checkbox&quot; name=&quot;vehicle[]&quot; value=&quot;Bike&quot; /&gt;
+      &lt;label for=&quot;vehicle_bike&quot;&gt;I have a bike&lt;/label&gt;&lt;br /&gt;
+      &lt;input id=&quot;vehicle_car&quot; type=&quot;checkbox&quot; name=&quot;vehicle[]&quot; value=&quot;Car&quot; /&gt;
+      &lt;label for=&quot;vehicle_car&quot;&gt;I have a car&lt;/label&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      Describe yourself:&lt;br /&gt;
+      &lt;textarea name=&quot;description&quot; cols=&quot;50&quot; rows=&quot;8&quot;&gt;&lt;/textarea&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+    &lt;/p&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>register.php</p><pre><code> &lt;?php
+/* register.php */
+
+header(&quot;Content-type: text/plain&quot;);
+
+/*
+NOTE: You should never use `print_r()` in production scripts, or
+otherwise output client-submitted data without sanitizing it first.
+Failing to sanitize can lead to cross-site scripting vulnerabilities.
+*/
+
+echo &quot;:: data received via GET ::\n\n&quot;;
+print_r($_GET);
+
+echo &quot;\n\n:: Data received via POST ::\n\n&quot;;
+print_r($_POST);
+
+echo &quot;\n\n:: Data received as \&quot;raw\&quot; (text/plain encoding) ::\n\n&quot;;
+if (isset($HTTP_RAW_POST_DATA)) { echo $HTTP_RAW_POST_DATA; }
+
+echo &quot;\n\n:: Files received ::\n\n&quot;;
+print_r($_FILES);
+</code></pre><p>调用方法：AJAXSubmit(myForm);</p><p>参考链接：</p><p>1.<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/Using_FormData_Objects" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/Using_FormData_Objects</a><br>2.<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Submitting_forms_and_uploading_files" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#Submitting_forms_and_uploading_files</a></p></div><div class="article-footer"><blockquote class="mt-2x"><ul class="post-copyright list-unstyled"><li class="post-copyright-link hidden-xs"><strong>本文链接：</strong> <a href="https://molly2molly.github.io/2018/12/27/文件的上传与下载/" title="文件的上传与下载" target="_blank" rel="external">https://molly2molly.github.io/2018/12/27/文件的上传与下载/</a></li><li class="post-copyright-license"><strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！</li></ul></blockquote><div class="panel panel-default panel-badger"><div class="panel-body"><figure class="media"><div class="media-left"><a href="https://github.com/molly2molly" target="_blank" class="img-burn thumb-sm visible-lg"><img src="/images/avatar.jpg" class="img-rounded w-full" alt=""></a></div><div class="media-body"><h3 class="media-heading"><a href="https://github.com/molly2molly" target="_blank"><span class="text-dark">张英姿</span><small class="ml-1x">前端工程师</small></a></h3><div>梦里寻他千百度 蓦然回首 那人却在灯火阑珊处</div></div></figure></div></div></div></article><section id="comments"><div id="vcomments"></div></section></div><nav class="bar bar-footer clearfix" data-stick-bottom=""><div class="bar-inner"><ul class="pager pull-left"><li class="prev"><a href="/2018/12/27/MIME类型/" title="MIME类型"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a></li><li class="next"><a href="/2018/12/21/ES6读书笔记/" title="ES6读书笔记"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a></li></ul><button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button><div class="bar-right"><div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div></div></div></nav><div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content donate"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><div class="modal-body"><div class="donate-box"><div class="donate-head"><p>Maybe you could buy me a cup of coffee.</p></div><div class="tab-content"><div role="tabpanel" class="tab-pane fade active in" id="alipay"><div class="donate-payimg"><img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan"></div><p class="text-muted mv">Scan this qrcode</p><p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p></div><div role="tabpanel" class="tab-pane fade" id="wechatpay"><div class="donate-payimg"><img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan"></div><p class="text-muted mv">Scan this qrcode</p><p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p></div></div><div class="donate-footer"><ul class="nav nav-tabs nav-justified" role="tablist"><li role="presentation" class="active"><a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a></li><li role="presentation"><a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a></li></ul></div></div></div></div></div></div></main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter"><ul class="social-links"><li><a href="https://github.com/molly2molly" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li></ul><div class="copyright"><div class="publishby">Theme by <a href="https://github.com/cofess" target="_blank">cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.</div></div></footer><script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script><script>window.jQuery||document.write('<script src="js/jquery.min.js"><\/script>')</script><script src="/js/plugin.min.js"></script><script src="/js/application.js"></script><script>!function(T){var n={TRANSLATION:{POSTS:"Posts",PAGES:"Pages",CATEGORIES:"Categories",TAGS:"Tags",UNTITLED:"(Untitled)"},ROOT_URL:"/",CONTENT_URL:"/content.json"};T.INSIGHT_CONFIG=n}(window)</script><script src="/js/insight.js"></script><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//cdn.jsdelivr.net/npm/valine"></script><script type="text/javascript">var GUEST=["nick","mail","link"],meta="nick,mail,link";meta=meta.split(",").filter(function(e){return GUEST.indexOf(e)>-1}),new Valine({el:"#vcomments",verify:!1,notify:!1,appId:"",appKey:"",placeholder:"Just go go",avatar:"mm",meta:meta,pageSize:"10",visitor:!1})</script></body></html><!-- rebuild by neat -->
