@@ -1,0 +1,493 @@
+<!-- build time:Fri Nov 29 2019 14:23:53 GMT+0800 (CST) --><!DOCTYPE html><html lang="zh"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui"><meta name="renderer" content="webkit"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no,email=no,adress=no"><meta name="theme-color" content="#000000"><meta http-equiv="window-target" content="_top"><title>原型与继承 | Hexo</title><meta name="description" content="构造函数的prototype属性是一个对象，包含所有实例对象需要共享的属性和方法每个对象都有一个内部属性[[prototype]],我们通常称之为原型.原型的值可以是一个对象,也可以是null.如果它的值是一个对象,则这个对象也一定有自己的原型.这样就形成了一条线性的链,我们称之为原型链.当查找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止。function"><meta property="og:type" content="article"><meta property="og:title" content="原型与继承"><meta property="og:url" content="https://molly2molly.github.io/2019/11/08/原型与继承/index.html"><meta property="og:site_name" content="张英姿的博客"><meta property="og:description" content="构造函数的prototype属性是一个对象，包含所有实例对象需要共享的属性和方法每个对象都有一个内部属性[[prototype]],我们通常称之为原型.原型的值可以是一个对象,也可以是null.如果它的值是一个对象,则这个对象也一定有自己的原型.这样就形成了一条线性的链,我们称之为原型链.当查找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止。function"><meta property="og:locale" content="zh-Hans"><meta property="og:updated_time" content="2019-11-21T06:28:54.620Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="原型与继承"><meta name="twitter:description" content="构造函数的prototype属性是一个对象，包含所有实例对象需要共享的属性和方法每个对象都有一个内部属性[[prototype]],我们通常称之为原型.原型的值可以是一个对象,也可以是null.如果它的值是一个对象,则这个对象也一定有自己的原型.这样就形成了一条线性的链,我们称之为原型链.当查找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止。function"><link rel="canonical" href="https://molly2molly.github.io/2019/11/08/原型与继承/index.html"><link rel="alternate" href="/atom.xml" title="张英姿的博客" type="application/atom+xml"><link rel="icon" href="/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"></head><body class="main-center theme-green" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="slimContent"><div class="navbar-header"><div class="profile-block text-center"><a id="avatar" href="https://github.com/molly2molly" target="_blank"><img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200"></a><h2 id="name" class="hidden-xs hidden-sm">张英姿</h2><h3 id="title" class="hidden-xs hidden-sm hidden-md">前端工程师</h3><small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 苏州, 中国</small></div><div class="search" id="search-form-wrap"><form class="search-form sidebar-form"><div class="input-group"><input type="text" class="search-form-input form-control" placeholder="Search"> <span class="input-group-btn"><button type="submit" class="search-form-submit btn btn-flat" onclick="return!1"><i class="icon icon-search"></i></button></span></div></form><div class="ins-search"><div class="ins-search-mask"></div><div class="ins-search-container"><div class="ins-input-wrapper"><input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech=""> <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="ins-section-wrapper"><div class="ins-section-container"></div></div></div></div></div><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button></div><nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation"><ul class="nav navbar-nav main-nav"><li class="menu-item menu-item-home"><a href="/."><i class="icon icon-home-fill"></i> <span class="menu-title">Home</span></a></li><li class="menu-item menu-item-archives"><a href="/archives"><i class="icon icon-archives-fill"></i> <span class="menu-title">Archives</span></a></li><li class="menu-item menu-item-categories"><a href="/categories"><i class="icon icon-folder"></i> <span class="menu-title">Categories</span></a></li><li class="menu-item menu-item-tags"><a href="/tags"><i class="icon icon-tags"></i> <span class="menu-title">Tags</span></a></li><li class="menu-item menu-item-repository"><a href="/repository"><i class="icon icon-project"></i> <span class="menu-title">Repository</span></a></li><li class="menu-item menu-item-books"><a href="/books"><i class="icon icon-book-fill"></i> <span class="menu-title">Books</span></a></li><li class="menu-item menu-item-links"><a href="/links"><i class="icon icon-friendship"></i> <span class="menu-title">Links</span></a></li><li class="menu-item menu-item-about"><a href="/about"><i class="icon icon-cup-fill"></i> <span class="menu-title">About</span></a></li></ul><ul class="social-links"><li><a href="https://github.com/molly2molly" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li></ul></nav></div></header><aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar"><div class="slimContent"><div class="widget"><h3 class="widget-title">Board</h3><div class="widget-body"><div id="board"><div class="content"><p>欢迎交流与分享经验!</p></div></div></div></div><div class="widget"><h3 class="widget-title">Categories</h3><div class="widget-body"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/others/">others</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Tags</h3><div class="widget-body"><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-javascript/">es6 javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a><span class="tag-list-count">1</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Tag Cloud</h3><div class="widget-body tagcloud"><a href="/tags/React/" style="font-size:13px">React</a> <a href="/tags/TCP/" style="font-size:13px">TCP</a> <a href="/tags/es6-javascript/" style="font-size:13px">es6 javascript</a> <a href="/tags/javascript/" style="font-size:14px">javascript</a> <a href="/tags/markdown/" style="font-size:13px">markdown</a> <a href="/tags/webpack/" style="font-size:13px">webpack</a> <a href="/tags/前端/" style="font-size:13px">前端</a></div></div><div class="widget"><h3 class="widget-title">Archive</h3><div class="widget-body"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Recent Posts</h3><div class="widget-body"><ul class="recent-post-list list-unstyled no-thumbnail"><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2019/11/21/git操作指南/" class="title">git操作指南</a></p><p class="item-date"><time datetime="2019-11-21T07:29:43.000Z" itemprop="datePublished">2019-11-21</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2019/11/21/RESTful/" class="title">RESTful</a></p><p class="item-date"><time datetime="2019-11-21T06:16:57.000Z" itemprop="datePublished">2019-11-21</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2019/11/21/算法/" class="title">算法</a></p><p class="item-date"><time datetime="2019-11-21T06:09:59.000Z" itemprop="datePublished">2019-11-21</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2019/11/15/file/" class="title">file</a></p><p class="item-date"><time datetime="2019-11-15T06:19:21.000Z" itemprop="datePublished">2019-11-15</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2019/11/14/curl/" class="title">curl</a></p><p class="item-date"><time datetime="2019-11-14T01:15:58.000Z" itemprop="datePublished">2019-11-14</time></p></div></li></ul></div></div></div></aside><main class="main" role="main"><div class="content"><article id="post-原型与继承" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting"><div class="article-header"><h1 class="article-title" itemprop="name">原型与继承</h1><div class="article-meta"><span class="article-date"><i class="icon icon-calendar-check"></i> <a href="/2019/11/08/原型与继承/" class="article-date"><time datetime="2019-11-08T07:41:47.000Z" itemprop="datePublished">2019-11-08</time></a></span> <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/11/08/原型与继承/#comments" class="article-comment-link">Comments</a></span></div></div><div class="article-entry marked-body" itemprop="articleBody"><p>构造函数的prototype属性是一个对象，包含所有实例对象需要共享的属性和方法</p><p>每个对象都有一个内部属性[[prototype]],我们通常称之为原型.原型的值可以是一个对象,也可以是null.如果它的值是一个对象,则这个对象也一定有自己的原型.这样就形成了一条线性的链,我们称之为原型链.</p><p>当查找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止。</p><pre><code>function getProperty(obj, prop) {
+    if(obj.hasOwnProperty(prop) return obj[prop];
+    else if(obj.__proto__ !== null) return getProperty(obj.__proto__, prop);
+    else return undefined;
+}
+</code></pre><blockquote><p>new一个对象的四个过程：<br>var person = new Person();</p><p>1、创建一个空对象<br>var obj = new Object();</p><p>2、设置原型链，新对象的<em>proto</em>属性指向构造函数的原型对象。<br>obj.__proto__ = Person.prototype;<br>obj.constructor = Person.prototype.constructor;</p><p>3、将obj作为this去调用构造函数A，从而设置成员（即对象属性和对象方法）并初始化。<br>var person = Person.call(obj);</p><p>4、返回新对象<br>return person;</p></blockquote><pre><code>function New(f) {
+    var n = {&apos;__proto__&apos; : f.prototype};
+    return function() {
+        f.apply(n, arguments);
+        return n;
+    }
+}
+</code></pre><hr><pre><code>Object.create = function (parent) {
+    function F() {};
+    F.prototype = parent;
+    return new F();
+}
+</code></pre><p>__proto__不是一个标准写法<br>Object.create的性能远比不上new,前者比厚着慢10倍左右</p><p>原型链是作为ES5实现继承的主要方法</p><p>当谈到继承时，JavaScript 只有一种结构：对象</p><p>几乎所有 JavaScript 中的对象都是位于原型链顶端的Object的实例</p><p>遵循ECMAScript标准，someObject.[[Prototype]] 符号是用于指向 someObject的原型。从 ECMAScript 6 开始，[[Prototype]] 可以通过Object.getPrototypeOf()和Object.setPrototypeOf()访问器来访问。这个等同于 JavaScript 的非标准但许多浏览器实现的属性 __proto__。<br>但它不应该与构造函数 func 的 prototype 属性相混淆。被构造函数创建的实例对象的 [[prototype]] 指向 func 的 prototype 属性。Object.prototype 属性表示Object的原型对象。</p><pre><code>var o = {
+  a: 2,
+  m: function(){
+    return this.a + 1;
+  }
+};
+console.log(o.m()); // 3
+// 当调用 o.m 时,&apos;this&apos;指向了o.
+var p = Object.create(o);
+// p是一个继承自 o 的对象
+p.a = 4; // 创建 p 的自身属性 a
+console.log(p.m()); // 5
+// 调用 p.m 时, &apos;this&apos;指向 p. 
+
+var o = {a: 1};
+// o 这个对象继承了Object.prototype上面的所有属性
+// o 继承了 Object.prototype 的 hasOwnProperty
+// Object.prototype 的原型为 null
+// 原型链如下:
+// o ---&gt; Object.prototype ---&gt; null
+
+
+var a = [&quot;yo&quot;, &quot;whasup&quot;, &quot;?&quot;];
+// 数组都继承于 Array.prototype 
+// (Array.prototype 中包含 indexOf, forEach等方法)
+// 原型链如下:
+// a ---&gt; Array.prototype ---&gt; Object.prototype ---&gt; null
+
+function f(){
+  return 2;
+}
+// 函数都继承于Function.prototype
+// (Function.prototype 中包含 call, bind等方法)
+// 原型链如下:
+// f ---&gt; Function.prototype ---&gt; Object.prototype ---&gt; null
+
+
+function Graph() {
+  this.vertices = [];
+  this.edges = [];
+}
+Graph.prototype = {
+  addVertex: function(v){
+    this.vertices.push(v);
+  }
+};
+var g = new Graph();
+// g是生成的对象,他的自身属性有&apos;vertices&apos;和&apos;edges&apos;.
+// 在g被实例化时,g.[[Prototype]]指向了Graph.prototype.
+console.log(g.hasOwnProperty(&apos;vertices&apos;)); // true
+console.log(g.hasOwnProperty(&apos;nope&apos;)); // false
+console.log(g.hasOwnProperty(&apos;addVertex&apos;)); // false
+console.log(g.__proto__.hasOwnProperty(&apos;addVertex&apos;)); // true
+hasOwnProperty 是 JavaScript 中处理属性并且不会遍历原型链的方法之一。(另一种方法: Object.keys())
+
+
+&quot;use strict&quot;;
+class Polygon {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+}
+class Square extends Polygon {
+  constructor(sideLength) {
+    super(sideLength, sideLength);
+  }
+  area() {
+    return this.height * this.width;
+  }
+  sideLength(newLength) {
+    this.height = newLength;
+    this.width = newLength;
+  }
+}
+var square = new Square(2);
+
+使用构造函数继承 
+1.构造函数绑定
+function Cat(name,color){
+  Animal.apply(this, arguments);
+  this.name = name;
+  this.color = color;
+}
+var cat1 = new Cat(&quot;大毛&quot;,&quot;黄色&quot;);
+alert(cat1.species); // 动物
+
+2.prototype模式
+Cat.prototype = new Animal();
+Cat.prototype.constructor = Cat;
+var cat1 = new Cat(&quot;大毛&quot;,&quot;黄色&quot;);
+alert(cat1.species); // 动物
+alert(cat1.constructor == Cat.prototype.constructor); // true
+
+3.直接继承prototype 
+function Animal(){ }
+Animal.prototype.species = &quot;动物&quot;;
+Cat.prototype = Animal.prototype;
+Cat.prototype.constructor = Cat;
+var cat1 = new Cat(&quot;大毛&quot;,&quot;黄色&quot;);
+alert(cat1.species); // 动物
+
+Cat.prototype和Animal.prototype现在指向了同一个对象，那么任何对Cat.prototype的修改，都会反映到Animal.prototype
+alert(Animal.prototype.constructor); // Cat
+
+4.利用空对象作为中介
+  var F = function(){};
+  F.prototype = Animal.prototype;
+  Cat.prototype = new F();
+  Cat.prototype.constructor = Cat;
+
+  function extend(Child, Parent) {
+    var F = function(){};
+    F.prototype = Parent.prototype;
+    Child.prototype = new F();
+    Child.prototype.constructor = Child;
+    Child.uber = Parent.prototype;
+  }
+
+5.拷贝继承
+  function Animal(){}
+  Animal.prototype.species = &quot;动物&quot;;
+  function extend2(Child, Parent) {
+    var p = Parent.prototype;
+    var c = Child.prototype;
+    for (var i in p) {
+      c[i] = p[i];
+    }
+    c.uber = p;
+  }
+extend2(Cat, Animal);
+var cat1 = new Cat(&quot;大毛&quot;,&quot;黄色&quot;);
+alert(cat1.species); // 动物
+
+非构造函数继承
+function object(o) {
+  function F() {}
+  F.prototype = o;
+  return new F();
+}
+
+浅拷贝
+function extendCopy(p) {
+  var c = {};
+  for (var i in p) { 
+    c[i] = p[i];
+  }
+  c.uber = p;
+  return c;
+}
+
+深拷贝
+function deepCopy(p, c) {
+  var c = c || {};
+  for (var i in p) {
+    if (typeof p[i] === &apos;object&apos;) {
+      c[i] = (p[i].constructor === Array) ? [] : {};
+      deepCopy(p[i], c[i]);
+    } else {
+      c[i] = p[i];
+    }
+  }
+  return c;
+}
+
+//ES5
+function Point(x, y) {
+  this.x = x;
+  this.y = y;
+}
+Point.prototype.toString = function () {
+    return &apos;(&apos; + this.x + &apos;, &apos; + this.y + &apos;)&apos;;
+};
+var p = new Point(1, 2);
+
+//ES6
+class Point {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    toString() {
+        return &quot;(&quot; + this.x + &quot;, &quot; + this.y + &quot;)&quot;;
+    }
+}
+typeof Point // &quot;function&quot;
+Point === Point.prototype.constructor // true
+
+
+class Point {
+  constructor() {
+    // ...
+  }
+  toString() {
+    // ...
+  }
+  toValue() {
+    // ...
+  }
+}
+// 等同于
+Point.prototype = {
+  constructor() {},
+  toString() {},
+  toValue() {},
+};
+
+
+class Point {
+  constructor(){
+    // ...
+  }
+}
+Object.assign(Point.prototype, {
+  toString(){},
+  toValue(){}
+});
+Point.prototype.constructor === Point // true
+
+
+class Point {
+  constructor(x, y) {
+    // ...
+  }
+  toString() {
+    // ...
+  }
+}
+Object.keys(Point.prototype) // []
+Object.getOwnPropertyNames(Point.prototype) // [&quot;constructor&quot;,&quot;toString&quot;]
+
+
+var Point = function (x, y) {
+  // ...
+};
+Point.prototype.toString = function() {
+  // ...
+};
+Object.keys(Point.prototype) // [&quot;toString&quot;]
+Object.getOwnPropertyNames(Point.prototype) // [&quot;constructor&quot;,&quot;toString&quot;]
+
+
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  toString() {
+    return &apos;(&apos; + this.x + &apos;, &apos; + this.y + &apos;)&apos;;
+  }
+}
+var point = new Point(2, 3);
+point.toString() // (2, 3)
+point.hasOwnProperty(&apos;x&apos;) // true
+point.hasOwnProperty(&apos;y&apos;) // true
+point.hasOwnProperty(&apos;toString&apos;) // false
+point.__proto__.hasOwnProperty(&apos;toString&apos;) // true
+var p1 = new Point(2,3);
+var p2 = new Point(3,2);
+p1.__proto__ === p2.__proto__ //true
+p1.__proto__.printName = function () { return &apos;Oops&apos; };
+p1.printName() // &quot;Oops&quot;
+p2.printName() // &quot;Oops&quot;
+var p3 = new Point(4,2);
+p3.printName() // &quot;Oops&quot;
+
+
+生产环境中，我们可以使用 Object.getPrototypeOf 方法来获取实例对象的原型，然后再来为原型添加方法/属性。
+
+
+
+class MyClass {
+  constructor() {
+    // ...
+  }
+  get prop() {
+    return &apos;getter&apos;;
+  }
+  set prop(value) {
+    console.log(&apos;setter: &apos;+value);
+  }
+}
+let inst = new MyClass();
+inst.prop = 123; // setter: 123
+inst.prop // &apos;getter&apos;
+
+
+class CustomHTMLElement {
+  constructor(element) {
+    this.element = element;
+  }
+  get html() {
+    return this.element.innerHTML;
+  }
+  set html(value) {
+    this.element.innerHTML = value;
+  }
+}
+var descriptor = Object.getOwnPropertyDescriptor(CustomHTMLElement.prototype, &quot;html&quot;);
+&quot;get&quot; in descriptor  // true
+&quot;set&quot; in descriptor  // true
+
+
+let methodName = &apos;getArea&apos;;
+class Square {
+  constructor(length) {
+    // ...
+  }
+  [methodName]() {
+    // ...
+  }
+}
+
+
+
+const MyClass = class Me {
+  getClassName() {
+    return Me.name;
+  }
+};
+let inst = new MyClass();
+inst.getClassName() // Me
+Me.name // ReferenceError: Me is not defined
+
+
+class Foo {
+  static classMethod() {
+    return &apos;hello&apos;;
+  }
+}
+Foo.classMethod() // &apos;hello&apos;
+var foo = new Foo();
+foo.classMethod() // TypeError: foo.classMethod is not a function
+
+
+class Foo {
+  static bar() {
+    this.baz();
+  }
+  static baz() {
+    console.log(&apos;hello&apos;);
+  }
+  baz() {
+    console.log(&apos;world&apos;);
+  }
+}
+Foo.bar() // hello
+
+
+
+class Foo {
+  static classMethod() {
+    return &apos;hello&apos;;
+  }
+}
+class Bar extends Foo {
+}
+Bar.classMethod() // &apos;hello&apos;
+
+
+class Foo {
+  static classMethod() {
+    return &apos;hello&apos;;
+  }
+}
+class Bar extends Foo {
+  static classMethod() {
+    return super.classMethod() + &apos;, too&apos;;
+  }
+}
+Bar.classMethod() // &quot;hello, too&quot;
+
+
+class IncreasingCounter {
+  constructor() {
+    this._count = 0;
+  }
+  get value() {
+    console.log(&apos;Getting the current value!&apos;);
+    return this._count;
+  }
+  increment() {
+    this._count++;
+  }
+}
+class IncreasingCounter {
+  _count = 0;
+  get value() {
+    console.log(&apos;Getting the current value!&apos;);
+    return this._count;
+  }
+  increment() {
+    this._count++;
+  }
+}
+
+
+function Person(name) {
+  if (new.target !== undefined) {
+    this.name = name;
+  } else {
+    throw new Error(&apos;必须使用 new 命令生成实例&apos;);
+  }
+}
+// 另一种写法
+function Person(name) {
+  if (new.target === Person) {
+    this.name = name;
+  } else {
+    throw new Error(&apos;必须使用 new 命令生成实例&apos;);
+  }
+}
+var person = new Person(&apos;张三&apos;); // 正确
+var notAPerson = Person.call(person, &apos;张三&apos;);  // 报错
+
+
+
+class Shape {
+  constructor() {
+    if (new.target === Shape) {
+      throw new Error(&apos;本类不能实例化&apos;);
+    }
+  }
+}
+class Rectangle extends Shape {
+  constructor(length, width) {
+    super();
+    // ...
+  }
+}
+var x = new Shape();  // 报错
+var y = new Rectangle(3, 4);  // 正确
+
+
+class ColorPoint extends Point {
+  constructor(x, y, color) {
+    super(x, y); // 调用父类的constructor(x, y)
+    this.color = color;
+  }
+  toString() {
+    return this.color + &apos; &apos; + super.toString(); // 调用父类的toString()
+  }
+}
+Object.getPrototypeOf(ColorPoint) === Point // true
+
+
+class A {
+}
+class B extends A {
+}
+B.__proto__ === A // true
+B.prototype.__proto__ === A.prototype // true
+
+
+
+类的继承模式
+class A {
+}
+class B {
+}
+// B 的实例继承 A 的实例
+Object.setPrototypeOf(B.prototype, A.prototype);
+// B 继承 A 的静态属性
+Object.setPrototypeOf(B, A);
+const b = new B();
+Object.setPrototypeOf = function (obj, proto) {
+  obj.__proto__ = proto;
+  return obj;
+}
+
+
+var p1 = new Point(2, 3);
+var p2 = new ColorPoint(2, 3, &apos;red&apos;);
+p2.__proto__ === p1.__proto__ // false
+p2.__proto__.__proto__ === p1.__proto__ // true
+</code></pre><p>原生构造函数会忽略apply方法传入的this，也就是说，原生构造函数的this无法绑定，导致拿不到内部属性。<br>ES5 是先新建子类的实例对象this，再将父类的属性添加到子类上，由于父类的内部属性无法获取，导致无法继承原生的构造函数。比如，Array构造函数有一个内部属性[[DefineOwnProperty]]，用来定义新属性时，更新length属性，这个内部属性无法在子类获取，导致子类的length属性行为不正常。<br>ES6 允许继承原生构造函数定义子类，因为 ES6 是先新建父类的实例对象this，然后再用子类的构造函数修饰this，使得父类的所有行为都可以继承。</p></div><div class="article-footer"><blockquote class="mt-2x"><ul class="post-copyright list-unstyled"><li class="post-copyright-link hidden-xs"><strong>本文链接：</strong> <a href="https://molly2molly.github.io/2019/11/08/原型与继承/" title="原型与继承" target="_blank" rel="external">https://molly2molly.github.io/2019/11/08/原型与继承/</a></li><li class="post-copyright-license"><strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！</li></ul></blockquote><div class="panel panel-default panel-badger"><div class="panel-body"><figure class="media"><div class="media-left"><a href="https://github.com/molly2molly" target="_blank" class="img-burn thumb-sm visible-lg"><img src="/images/avatar.jpg" class="img-rounded w-full" alt=""></a></div><div class="media-body"><h3 class="media-heading"><a href="https://github.com/molly2molly" target="_blank"><span class="text-dark">张英姿</span><small class="ml-1x">前端工程师</small></a></h3><div>梦里寻他千百度 蓦然回首 那人却在灯火阑珊处</div></div></figure></div></div></div></article><section id="comments"><div id="vcomments"></div></section></div><nav class="bar bar-footer clearfix" data-stick-bottom=""><div class="bar-inner"><ul class="pager pull-left"><li class="prev"><a href="/2019/11/14/curl/" title="curl"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a></li><li class="next"><a href="/2019/11/08/小程序开发宝典/" title="小程序开发宝典"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a></li></ul><button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button><div class="bar-right"><div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div></div></div></nav><div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content donate"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><div class="modal-body"><div class="donate-box"><div class="donate-head"><p>Maybe you could buy me a cup of coffee.</p></div><div class="tab-content"><div role="tabpanel" class="tab-pane fade active in" id="alipay"><div class="donate-payimg"><img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan"></div><p class="text-muted mv">Scan this qrcode</p><p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p></div><div role="tabpanel" class="tab-pane fade" id="wechatpay"><div class="donate-payimg"><img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan"></div><p class="text-muted mv">Scan this qrcode</p><p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p></div></div><div class="donate-footer"><ul class="nav nav-tabs nav-justified" role="tablist"><li role="presentation" class="active"><a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a></li><li role="presentation"><a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a></li></ul></div></div></div></div></div></div></main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter"><ul class="social-links"><li><a href="https://github.com/molly2molly" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li></ul><div class="copyright"><div class="publishby">Theme by <a href="https://github.com/cofess" target="_blank">cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.</div></div></footer><script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script><script>window.jQuery||document.write('<script src="js/jquery.min.js"><\/script>')</script><script src="/js/plugin.min.js"></script><script src="/js/application.js"></script><script>!function(T){var n={TRANSLATION:{POSTS:"Posts",PAGES:"Pages",CATEGORIES:"Categories",TAGS:"Tags",UNTITLED:"(Untitled)"},ROOT_URL:"/",CONTENT_URL:"/content.json"};T.INSIGHT_CONFIG=n}(window)</script><script src="/js/insight.js"></script><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//cdn.jsdelivr.net/npm/valine"></script><script type="text/javascript">var GUEST=["nick","mail","link"],meta="nick,mail,link";meta=meta.split(",").filter(function(e){return GUEST.indexOf(e)>-1}),new Valine({el:"#vcomments",verify:!1,notify:!1,appId:"",appKey:"",placeholder:"Just go go",avatar:"mm",meta:meta,pageSize:"10",visitor:!1})</script><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({model:{jsonPath:"/null"},display:{position:"left",width:150,height:300},mobile:{show:!0},log:!1,pluginJsPath:"lib/",pluginModelPath:"assets/",pluginRootPath:"live2dw/",tagMode:!1})</script></body></html><!-- rebuild by neat -->
