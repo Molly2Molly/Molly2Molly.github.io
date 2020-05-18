@@ -1,4 +1,4 @@
-<!-- build time:Thu Dec 12 2019 13:39:49 GMT+0800 (CST) --><!DOCTYPE html><html lang="zh"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui"><meta name="renderer" content="webkit"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no,email=no,adress=no"><meta name="theme-color" content="#000000"><meta http-equiv="window-target" content="_top"><title>d3.js | Hexo</title><meta name="description" content="d3.js data-driven document如果我们用函数式风格创建对象，并且该对象所有的方法都没有用this，（并且这个对象不包含外部可见的成员数据），那么这个对象就是持久的（durable）。持久对象就是许多功能行为的集合了。— Crockfort D.数据可视化的步骤1.获取 Acquire 2.分析 Parse 3.过滤 Filter 4.挖掘 Mine 5.表现 Represen"><meta property="og:type" content="article"><meta property="og:title" content="d3.js"><meta property="og:url" content="https://molly2molly.github.io/2018/05/09/d3-js/index.html"><meta property="og:site_name" content="张英姿的博客"><meta property="og:description" content="d3.js data-driven document如果我们用函数式风格创建对象，并且该对象所有的方法都没有用this，（并且这个对象不包含外部可见的成员数据），那么这个对象就是持久的（durable）。持久对象就是许多功能行为的集合了。— Crockfort D.数据可视化的步骤1.获取 Acquire 2.分析 Parse 3.过滤 Filter 4.挖掘 Mine 5.表现 Represen"><meta property="og:locale" content="zh-Hans"><meta property="og:updated_time" content="2019-11-21T06:28:54.617Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="d3.js"><meta name="twitter:description" content="d3.js data-driven document如果我们用函数式风格创建对象，并且该对象所有的方法都没有用this，（并且这个对象不包含外部可见的成员数据），那么这个对象就是持久的（durable）。持久对象就是许多功能行为的集合了。— Crockfort D.数据可视化的步骤1.获取 Acquire 2.分析 Parse 3.过滤 Filter 4.挖掘 Mine 5.表现 Represen"><link rel="canonical" href="https://molly2molly.github.io/2018/05/09/d3-js/index.html"><link rel="alternate" href="/atom.xml" title="张英姿的博客" type="application/atom+xml"><link rel="icon" href="/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"></head><body class="main-center theme-green" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="slimContent"><div class="navbar-header"><div class="profile-block text-center"><a id="avatar" href="https://github.com/molly2molly" target="_blank"><img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200"></a><h2 id="name" class="hidden-xs hidden-sm">张英姿</h2><h3 id="title" class="hidden-xs hidden-sm hidden-md">前端工程师</h3><small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 苏州, 中国</small></div><div class="search" id="search-form-wrap"><form class="search-form sidebar-form"><div class="input-group"><input type="text" class="search-form-input form-control" placeholder="Search"> <span class="input-group-btn"><button type="submit" class="search-form-submit btn btn-flat" onclick="return!1"><i class="icon icon-search"></i></button></span></div></form><div class="ins-search"><div class="ins-search-mask"></div><div class="ins-search-container"><div class="ins-input-wrapper"><input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech=""> <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="ins-section-wrapper"><div class="ins-section-container"></div></div></div></div></div><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button></div><nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation"><ul class="nav navbar-nav main-nav"><li class="menu-item menu-item-home"><a href="/."><i class="icon icon-home-fill"></i> <span class="menu-title">Home</span></a></li><li class="menu-item menu-item-archives"><a href="/archives"><i class="icon icon-archives-fill"></i> <span class="menu-title">Archives</span></a></li><li class="menu-item menu-item-categories"><a href="/categories"><i class="icon icon-folder"></i> <span class="menu-title">Categories</span></a></li><li class="menu-item menu-item-tags"><a href="/tags"><i class="icon icon-tags"></i> <span class="menu-title">Tags</span></a></li><li class="menu-item menu-item-repository"><a href="/repository"><i class="icon icon-project"></i> <span class="menu-title">Repository</span></a></li><li class="menu-item menu-item-books"><a href="/books"><i class="icon icon-book-fill"></i> <span class="menu-title">Books</span></a></li><li class="menu-item menu-item-links"><a href="/links"><i class="icon icon-friendship"></i> <span class="menu-title">Links</span></a></li><li class="menu-item menu-item-about"><a href="/about"><i class="icon icon-cup-fill"></i> <span class="menu-title">About</span></a></li></ul><ul class="social-links"><li><a href="https://github.com/molly2molly" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li></ul></nav></div></header><aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar"><div class="slimContent"><div class="widget"><h3 class="widget-title">Board</h3><div class="widget-body"><div id="board"><div class="content"><p>欢迎交流与分享经验!</p></div></div></div></div><div class="widget"><h3 class="widget-title">Categories</h3><div class="widget-body"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/others/">others</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Tags</h3><div class="widget-body"><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-javascript/">es6 javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a><span class="tag-list-count">1</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Tag Cloud</h3><div class="widget-body tagcloud"><a href="/tags/React/" style="font-size:13px">React</a> <a href="/tags/TCP/" style="font-size:13px">TCP</a> <a href="/tags/es6-javascript/" style="font-size:13px">es6 javascript</a> <a href="/tags/javascript/" style="font-size:14px">javascript</a> <a href="/tags/markdown/" style="font-size:13px">markdown</a> <a href="/tags/webpack/" style="font-size:13px">webpack</a> <a href="/tags/前端/" style="font-size:13px">前端</a></div></div><div class="widget"><h3 class="widget-title">Archive</h3><div class="widget-body"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Recent Posts</h3><div class="widget-body"><ul class="recent-post-list list-unstyled no-thumbnail"><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2019/12/10/vue读书笔记/" class="title">vue读书笔记</a></p><p class="item-date"><time datetime="2019-12-10T07:47:02.000Z" itemprop="datePublished">2019-12-10</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2019/12/10/MobX/" class="title">MobX</a></p><p class="item-date"><time datetime="2019-12-10T00:59:18.000Z" itemprop="datePublished">2019-12-10</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2019/12/03/FunctionalProgramming函数式编程/" class="title">FunctionalProgramming函数式编程</a></p><p class="item-date"><time datetime="2019-12-03T01:37:42.000Z" itemprop="datePublished">2019-12-03</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2019/11/21/git操作指南/" class="title">git操作指南</a></p><p class="item-date"><time datetime="2019-11-21T07:29:43.000Z" itemprop="datePublished">2019-11-21</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2019/11/21/RESTful/" class="title">RESTful</a></p><p class="item-date"><time datetime="2019-11-21T06:16:57.000Z" itemprop="datePublished">2019-11-21</time></p></div></li></ul></div></div></div></aside><main class="main" role="main"><div class="content"><article id="post-d3-js" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting"><div class="article-header"><h1 class="article-title" itemprop="name">d3.js</h1><div class="article-meta"><span class="article-date"><i class="icon icon-calendar-check"></i> <a href="/2018/05/09/d3-js/" class="article-date"><time datetime="2018-05-09T01:20:29.000Z" itemprop="datePublished">2018-05-09</time></a></span> <span class="article-category"><i class="icon icon-folder"></i> <a class="article-category-link" href="/categories/D3-js/">D3.js</a></span> <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/05/09/d3-js/#comments" class="article-comment-link">Comments</a></span></div></div><div class="article-entry marked-body" itemprop="articleBody"><p>d3.js data-driven document</p><p>如果我们用函数式风格创建对象，并且该对象所有的方法都没有用this，（并且这个对象不包含外部可见的成员数据），那么这个对象就是持久的（durable）。持久对象就是许多功能行为的集合了。<br>— Crockfort D.</p><p>数据可视化的步骤</p><pre><code>1.获取 Acquire
+<!-- build time:Mon May 18 2020 15:27:31 GMT+0800 (中国标准时间) --><!DOCTYPE html><html lang="zh"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui"><meta name="renderer" content="webkit"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no,email=no,adress=no"><meta name="theme-color" content="#000000"><meta http-equiv="window-target" content="_top"><title>d3.js | Hexo</title><meta name="description" content="d3.js data-driven document123456789101112// Update…var p = d3.select(&amp;quot;body&amp;quot;)  .selectAll(&amp;quot;p&amp;quot;)  .data([4, 8, 15, 16, 23, 42])    .text(function(d) &amp;#123; return d; &amp;#125;);// Enter…"><meta property="og:type" content="article"><meta property="og:title" content="d3.js"><meta property="og:url" content="https://molly2molly.github.io/2018/05/09/d3-js/index.html"><meta property="og:site_name" content="张英姿的博客"><meta property="og:description" content="d3.js data-driven document123456789101112// Update…var p = d3.select(&amp;quot;body&amp;quot;)  .selectAll(&amp;quot;p&amp;quot;)  .data([4, 8, 15, 16, 23, 42])    .text(function(d) &amp;#123; return d; &amp;#125;);// Enter…"><meta property="og:locale" content="zh-Hans"><meta property="og:updated_time" content="2020-02-20T02:28:26.200Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="d3.js"><meta name="twitter:description" content="d3.js data-driven document123456789101112// Update…var p = d3.select(&amp;quot;body&amp;quot;)  .selectAll(&amp;quot;p&amp;quot;)  .data([4, 8, 15, 16, 23, 42])    .text(function(d) &amp;#123; return d; &amp;#125;);// Enter…"><link rel="canonical" href="https://molly2molly.github.io/2018/05/09/d3-js/index.html"><link rel="alternate" href="/atom.xml" title="张英姿的博客" type="application/atom+xml"><link rel="icon" href="/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"></head><body class="main-center theme-green" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="slimContent"><div class="navbar-header"><div class="profile-block text-center"><a id="avatar" href="https://github.com/molly2molly" target="_blank"><img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200"></a><h2 id="name" class="hidden-xs hidden-sm">张英姿</h2><h3 id="title" class="hidden-xs hidden-sm hidden-md">前端工程师</h3><small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 苏州, 中国</small></div><div class="search" id="search-form-wrap"><form class="search-form sidebar-form"><div class="input-group"><input type="text" class="search-form-input form-control" placeholder="Search"> <span class="input-group-btn"><button type="submit" class="search-form-submit btn btn-flat" onclick="return!1"><i class="icon icon-search"></i></button></span></div></form><div class="ins-search"><div class="ins-search-mask"></div><div class="ins-search-container"><div class="ins-input-wrapper"><input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech=""> <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="ins-section-wrapper"><div class="ins-section-container"></div></div></div></div></div><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button></div><nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation"><ul class="nav navbar-nav main-nav"><li class="menu-item menu-item-home"><a href="/."><i class="icon icon-home-fill"></i> <span class="menu-title">Home</span></a></li><li class="menu-item menu-item-archives"><a href="/archives"><i class="icon icon-archives-fill"></i> <span class="menu-title">Archives</span></a></li><li class="menu-item menu-item-categories"><a href="/categories"><i class="icon icon-folder"></i> <span class="menu-title">Categories</span></a></li><li class="menu-item menu-item-tags"><a href="/tags"><i class="icon icon-tags"></i> <span class="menu-title">Tags</span></a></li><li class="menu-item menu-item-repository"><a href="/repository"><i class="icon icon-project"></i> <span class="menu-title">Repository</span></a></li><li class="menu-item menu-item-books"><a href="/books"><i class="icon icon-book-fill"></i> <span class="menu-title">Books</span></a></li><li class="menu-item menu-item-links"><a href="/links"><i class="icon icon-friendship"></i> <span class="menu-title">Links</span></a></li><li class="menu-item menu-item-about"><a href="/about"><i class="icon icon-cup-fill"></i> <span class="menu-title">About</span></a></li></ul><ul class="social-links"><li><a href="https://github.com/molly2molly" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li></ul></nav></div></header><aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar"><div class="slimContent"><div class="widget"><h3 class="widget-title">Board</h3><div class="widget-body"><div id="board"><div class="content"><p>欢迎交流与分享经验!</p></div></div></div></div><div class="widget"><h3 class="widget-title">Categories</h3><div class="widget-body"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/others/">others</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Tags</h3><div class="widget-body"><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-javascript/">es6 javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a><span class="tag-list-count">1</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Tag Cloud</h3><div class="widget-body tagcloud"><a href="/tags/React/" style="font-size:13px">React</a> <a href="/tags/TCP/" style="font-size:13px">TCP</a> <a href="/tags/es6-javascript/" style="font-size:13px">es6 javascript</a> <a href="/tags/javascript/" style="font-size:14px">javascript</a> <a href="/tags/markdown/" style="font-size:13px">markdown</a> <a href="/tags/webpack/" style="font-size:13px">webpack</a> <a href="/tags/前端/" style="font-size:13px">前端</a></div></div><div class="widget"><h3 class="widget-title">Archive</h3><div class="widget-body"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Recent Posts</h3><div class="widget-body"><ul class="recent-post-list list-unstyled no-thumbnail"><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2020/05/07/Decorators/" class="title">Decorators</a></p><p class="item-date"><time datetime="2020-05-07T05:54:48.000Z" itemprop="datePublished">2020-05-07</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2020/05/07/Angular/" class="title">Angular</a></p><p class="item-date"><time datetime="2020-05-07T03:30:40.000Z" itemprop="datePublished">2020-05-07</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2020/02/25/状态机/" class="title">状态机</a></p><p class="item-date"><time datetime="2020-02-25T02:00:04.000Z" itemprop="datePublished">2020-02-25</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2020/02/21/js异步流程控制/" class="title">js异步流程控制</a></p><p class="item-date"><time datetime="2020-02-21T01:42:04.000Z" itemprop="datePublished">2020-02-21</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/2019/12/26/JSEventLoop/" class="title">JSEventLoop</a></p><p class="item-date"><time datetime="2019-12-26T05:43:08.000Z" itemprop="datePublished">2019-12-26</time></p></div></li></ul></div></div></div></aside><main class="main" role="main"><div class="content"><article id="post-d3-js" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting"><div class="article-header"><h1 class="article-title" itemprop="name">d3.js</h1><div class="article-meta"><span class="article-date"><i class="icon icon-calendar-check"></i> <a href="/2018/05/09/d3-js/" class="article-date"><time datetime="2018-05-09T01:20:29.000Z" itemprop="datePublished">2018-05-09</time></a></span> <span class="article-category"><i class="icon icon-folder"></i> <a class="article-category-link" href="/categories/D3-js/">D3.js</a></span> <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/05/09/d3-js/#comments" class="article-comment-link">Comments</a></span></div></div><div class="article-entry marked-body" itemprop="articleBody"><p>d3.js data-driven document</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// Update…</span><br><span class="line">var p = d3.select(&quot;body&quot;)</span><br><span class="line">  .selectAll(&quot;p&quot;)</span><br><span class="line">  .data([4, 8, 15, 16, 23, 42])</span><br><span class="line">    .text(function(d) &#123; return d; &#125;);</span><br><span class="line"></span><br><span class="line">// Enter…</span><br><span class="line">p.enter().append(&quot;p&quot;)</span><br><span class="line">    .text(function(d) &#123; return d; &#125;);</span><br><span class="line"></span><br><span class="line">// Exit…</span><br><span class="line">p.exit().remove();</span><br></pre></td></tr></table></figure><p>如果我们用函数式风格创建对象，并且该对象所有的方法都没有用this，（并且这个对象不包含外部可见的成员数据），那么这个对象就是持久的（durable）。持久对象就是许多功能行为的集合了。<br>— Crockfort D.</p><p>数据可视化的步骤</p><pre><code>1.获取 Acquire
 2.分析 Parse
 3.过滤 Filter
 4.挖掘 Mine
@@ -182,7 +182,7 @@ setInterval(function(){
     render(data2);
 },1500);
 render(data2);
-</code></pre><p>#####将函数绑定为数据</p><pre><code>    d3.select(&quot;body&quot;).append(&quot;div&quot;).attr(&quot;id&quot;,&quot;container3&quot;);
+</code></pre><h5 id="将函数绑定为数据"><a href="#将函数绑定为数据" class="headerlink" title="将函数绑定为数据"></a>将函数绑定为数据</h5><pre><code>    d3.select(&quot;body&quot;).append(&quot;div&quot;).attr(&quot;id&quot;,&quot;container3&quot;);
 var data3 = [];
 var next = function(x) {
     return 15+x*x;
@@ -209,7 +209,7 @@ setInterval(function(){
     render3();
 },1500);
 render3();
-</code></pre><p>作为数据的函数一般情况下需要时幂等的。幂等函数是指同一个函数，对于相同输入的多次运算结果和一次的运算结果是相同的。</p><p>####处理数组</p><pre><code>var array = [3,2,11,7,6,4,10,7,15];
+</code></pre><p>作为数据的函数一般情况下需要时幂等的。幂等函数是指同一个函数，对于相同输入的多次运算结果和一次的运算结果是相同的。</p><h4 id="处理数组"><a href="#处理数组" class="headerlink" title="处理数组"></a>处理数组</h4><pre><code>var array = [3,2,11,7,6,4,10,7,15];
 d3.select(&quot;#min&quot;).text(d3.min(array));
 d3.select(&quot;#max&quot;).text(d3.max(array));
 d3.select(&quot;#extent&quot;).text(d3.extent(array));
@@ -281,7 +281,21 @@ function printObject(obj) {
     s += &quot;}&quot;;
     return s;
 }
-</code></pre><p>#<br>d3.ascending = function(a,b){return a<b ?="" -1="" :="" a="">b ? 1 : 0;}<br>d3.descending = function(a,b){return a&gt;b ? -1 : a&lt;b ? 1 : 0;}</b></p><p>####数据的过滤<br>var data = [ // &lt;-A<br>{expense: 10, category: “Retail”},<br>{expense: 15, category: “Gas”},<br>{expense: 30, category: “Retail”},<br>{expense: 50, category: “Dining”},<br>{expense: 80, category: “Gas”},<br>{expense: 65, category: “Retail”},<br>{expense: 55, category: “Gas”},<br>{expense: 30, category: “Dining”},<br>{expense: 20, category: “Retail”},<br>{expense: 10, category: “Dining”},<br>{expense: 8, category: “Gas”}<br>];</p><pre><code>function render(data, category) {
+</code></pre><p>#<br>d3.ascending = function(a,b){return a<b ?="" -1="" :="" a="">b ? 1 : 0;}<br>d3.descending = function(a,b){return a&gt;b ? -1 : a&lt;b ? 1 : 0;}</b></p><h4 id="数据的过滤"><a href="#数据的过滤" class="headerlink" title="数据的过滤"></a>数据的过滤</h4><pre><code>var data = [ // &lt;-A
+    {expense: 10, category: &quot;Retail&quot;},
+    {expense: 15, category: &quot;Gas&quot;},
+    {expense: 30, category: &quot;Retail&quot;},
+    {expense: 50, category: &quot;Dining&quot;},
+    {expense: 80, category: &quot;Gas&quot;},
+    {expense: 65, category: &quot;Retail&quot;},
+    {expense: 55, category: &quot;Gas&quot;},
+    {expense: 30, category: &quot;Dining&quot;},
+    {expense: 20, category: &quot;Retail&quot;},
+    {expense: 10, category: &quot;Dining&quot;},
+    {expense: 8, category: &quot;Gas&quot;}
+];
+
+function render(data, category) {
     d3.select(&quot;body&quot;).selectAll(&quot;div.h-bar&quot;) // &lt;-B
             .data(data)
     .enter()
@@ -331,7 +345,21 @@ function select(category) {
         Clear
     &lt;/button&gt;
 &lt;/div&gt;
-</code></pre><p>####基于数据的图形排序<br>var data = [ // &lt;-A<br>{expense: 10, category: “Retail”},<br>{expense: 15, category: “Gas”},<br>{expense: 30, category: “Retail”},<br>{expense: 50, category: “Dining”},<br>{expense: 80, category: “Gas”},<br>{expense: 65, category: “Retail”},<br>{expense: 55, category: “Gas”},<br>{expense: 30, category: “Dining”},<br>{expense: 20, category: “Retail”},<br>{expense: 10, category: “Dining”},<br>{expense: 8, category: “Gas”}<br>];</p><pre><code>function render(data, comparator) {
+</code></pre><h4 id="基于数据的图形排序"><a href="#基于数据的图形排序" class="headerlink" title="基于数据的图形排序"></a>基于数据的图形排序</h4><pre><code>var data = [ // &lt;-A
+    {expense: 10, category: &quot;Retail&quot;},
+    {expense: 15, category: &quot;Gas&quot;},
+    {expense: 30, category: &quot;Retail&quot;},
+    {expense: 50, category: &quot;Dining&quot;},
+    {expense: 80, category: &quot;Gas&quot;},
+    {expense: 65, category: &quot;Retail&quot;},
+    {expense: 55, category: &quot;Gas&quot;},
+    {expense: 30, category: &quot;Dining&quot;},
+    {expense: 20, category: &quot;Retail&quot;},
+    {expense: 10, category: &quot;Dining&quot;},
+    {expense: 8, category: &quot;Gas&quot;}
+];
+
+function render(data, comparator) {
     d3.select(&quot;body&quot;).selectAll(&quot;div.h-bar&quot;) // &lt;-B
             .data(data)
         .enter().append(&quot;div&quot;)
@@ -383,7 +411,7 @@ function sort(comparator) {
         Clear
     &lt;/button&gt;
 &lt;/div&gt;
-</code></pre><p>####从服务器加载数据</p><pre><code>function load(){
+</code></pre><h4 id="从服务器加载数据"><a href="#从服务器加载数据" class="headerlink" title="从服务器加载数据"></a>从服务器加载数据</h4><pre><code>function load(){
     d3.json(&quot;data.json&quot;, function(error, json){
         data = data.concat(json);  
         render(data);
@@ -392,7 +420,7 @@ function sort(comparator) {
 
 json,csv,tsv,txt,html,xml
 d3.xhr
-</code></pre><p>假设A和B是两个非空集合，函数f是A到B的一个映射，使得B中的每个元素与A中的元素一一对应。当b中每个元素都可以通过函数f映射到a中的相应元素时，记做f(a)=b</p><p>#####数值尺度</p><pre><code>&lt;div id=&quot;linear&quot; class=&quot;clear&quot;&gt;&lt;span&gt;n&lt;/span&gt;&lt;/div&gt;
+</code></pre><p>假设A和B是两个非空集合，函数f是A到B的一个映射，使得B中的每个元素与A中的元素一一对应。当b中每个元素都可以通过函数f映射到a中的相应元素时，记做f(a)=b</p><h5 id="数值尺度"><a href="#数值尺度" class="headerlink" title="数值尺度"></a>数值尺度</h5><pre><code>&lt;div id=&quot;linear&quot; class=&quot;clear&quot;&gt;&lt;span&gt;n&lt;/span&gt;&lt;/div&gt;
 &lt;div id=&quot;linear-capped&quot; class=&quot;clear&quot;&gt;
     &lt;span&gt;1 &amp;lt;= a*n + b &amp;lt;= 20&lt;/span&gt;
 &lt;/div&gt;
@@ -453,7 +481,15 @@ render(data, pow, &quot;#pow&quot;);
 render(data, powCapped, &quot;#pow-capped&quot;);
 render(data, log, &quot;#log&quot;);
 render(data, logCapped, &quot;#log-capped&quot;);
-</code></pre><p>除了上述尺度外，D3还提供多种数值尺度，例如 quantize(一种线性离散尺度)，threshold(阈值尺度)，quantile(分位尺度)，identity(等价尺度)</p><p>#####时间尺度<br>var start = new Date(2013, 0, 1),<br>end = new Date(2013, 11, 31),<br>range = [0, 1200],<br>time = d3.scaleTime().domain([start, end])<br>.rangeRound(range),<br>max = 12,<br>data = [];</p><pre><code>for (var i = 0; i &lt; max; ++i){ 
+</code></pre><p>除了上述尺度外，D3还提供多种数值尺度，例如 quantize(一种线性离散尺度)，threshold(阈值尺度)，quantile(分位尺度)，identity(等价尺度)</p><h5 id="时间尺度"><a href="#时间尺度" class="headerlink" title="时间尺度"></a>时间尺度</h5><pre><code>var start = new Date(2013, 0, 1), 
+    end = new Date(2013, 11, 31),
+    range = [0, 1200],
+    time = d3.scaleTime().domain([start, end]) 
+        .rangeRound(range), 
+    max = 12,
+    data = [];
+
+for (var i = 0; i &lt; max; ++i){ 
     var date = new Date(start.getTime());
     date.setMonth(start.getMonth() + i);
     data.push(date);
@@ -481,7 +517,7 @@ function render(data, scale, selector) {
 }
 
 render(data, time, &quot;#time&quot;);
-</code></pre><p>#####有序尺度</p><pre><code>var max = 10, data = [];
+</code></pre><h5 id="有序尺度"><a href="#有序尺度" class="headerlink" title="有序尺度"></a>有序尺度</h5><pre><code>var max = 10, data = [];
 
 for (var i = 0; i &lt; max; ++i) data.push(i); 
 
@@ -511,14 +547,14 @@ function render(data, scale, selector) {
 
 render(data, alphabet, &quot;#alphabet&quot;);
 render(data, d3.scaleOrdinal(d3.schemeCategory10), &quot;#category10&quot;);
-</code></pre><p>#####插值器</p><pre><code>var interpolate = d3.interpolateNumber(0,100);
+</code></pre><h5 id="插值器"><a href="#插值器" class="headerlink" title="插值器"></a>插值器</h5><pre><code>var interpolate = d3.interpolateNumber(0,100);
 interpolate(0.1);//10
 interpolate(0.99);//99
 
 function interpolate(t){
     return a*(1-t)+b*t;
 }
-</code></pre><p>#####字符串插值</p><pre><code>d3.select(&quot;body&quot;).append(&quot;div&quot;).attr(&quot;id&quot;,&quot;font&quot;);
+</code></pre><h5 id="字符串插值"><a href="#字符串插值" class="headerlink" title="字符串插值"></a>字符串插值</h5><pre><code>d3.select(&quot;body&quot;).append(&quot;div&quot;).attr(&quot;id&quot;,&quot;font&quot;);
 var max = 11, data = [];
 
 var sizeScale = d3.scaleLinear() 
@@ -551,7 +587,7 @@ function render(data, scale, selector) {
 }
 
 render(data, sizeScale, &quot;#font&quot;);
-</code></pre><p>#####颜色插值</p><pre><code>    d3.select(&quot;body&quot;).append(&quot;div&quot;).attr(&quot;id&quot;,&quot;color&quot;).attr(&quot;class&quot;,&quot;clear&quot;);
+</code></pre><h5 id="颜色插值"><a href="#颜色插值" class="headerlink" title="颜色插值"></a>颜色插值</h5><pre><code>    d3.select(&quot;body&quot;).append(&quot;div&quot;).attr(&quot;id&quot;,&quot;color&quot;).attr(&quot;class&quot;,&quot;clear&quot;);
     d3.select(&quot;body&quot;).append(&quot;div&quot;).attr(&quot;id&quot;,&quot;color-diverge&quot;).attr(&quot;class&quot;,&quot;clear&quot;);
     var max = 21, data = [];
 
@@ -593,7 +629,7 @@ function render(data, scale, selector) {
 
 render(data, colorScale, &quot;#color&quot;);
 render(data, divergingScale(5), &quot;#color-diverge&quot;);
-</code></pre><p>#####复合对象插值</p><pre><code>d3.select(&quot;body&quot;).append(&quot;div&quot;).attr(&quot;id&quot;,&quot;compound&quot;);
+</code></pre><h5 id="复合对象插值"><a href="#复合对象插值" class="headerlink" title="复合对象插值"></a>复合对象插值</h5><pre><code>d3.select(&quot;body&quot;).append(&quot;div&quot;).attr(&quot;id&quot;,&quot;compound&quot;);
     var max = 21, data = [];
 
 var compoundScale = d3.scalePow()
@@ -630,7 +666,7 @@ function render(data, scale, selector) {
 }
 
 render(data, compoundScale, &quot;#compound&quot;);
-</code></pre><p>#####自定义插值器</p><pre><code>d3.select(&quot;body&quot;).append(&quot;div&quot;).attr(&quot;id&quot;,&quot;dollar&quot;);
+</code></pre><h5 id="自定义插值器"><a href="#自定义插值器" class="headerlink" title="自定义插值器"></a>自定义插值器</h5><pre><code>d3.select(&quot;body&quot;).append(&quot;div&quot;).attr(&quot;id&quot;,&quot;dollar&quot;);
 d3.select(&quot;body&quot;).append(&quot;div&quot;).attr(&quot;id&quot;,&quot;alphabet&quot;);
 
 var dollarScale = d3.scaleLinear()
@@ -694,7 +730,7 @@ function render(scale, selector) {
 
 render(dollarScale, &quot;#dollar&quot;);
 render(alphabetScale, &quot;#alphabet&quot;);
-</code></pre><p>#####坐标轴基础</p><pre><code>&lt;div class=&quot;control-group&quot;&gt;
+</code></pre><h5 id="坐标轴基础"><a href="#坐标轴基础" class="headerlink" title="坐标轴基础"></a>坐标轴基础</h5><pre><code>&lt;div class=&quot;control-group&quot;&gt;
     &lt;button onclick=&quot;renderAll(&apos;bottom&apos;)&quot;&gt;
         horizontal bottom
     &lt;/button&gt;
@@ -761,7 +797,7 @@ function renderAll(orient){
                 .range([0, axisWidth]), 3, orient);
 }
 window.renderAll = renderAll;
-</code></pre><p>#####自定义刻度</p><pre><code>var height = 500, 
+</code></pre><h5 id="自定义刻度"><a href="#自定义刻度" class="headerlink" title="自定义刻度"></a>自定义刻度</h5><pre><code>var height = 500, 
     width = 500, 
     margin = 25,
     axisWidth = width - 2 * margin;
@@ -850,7 +886,7 @@ function renderYAxis(){
 
 renderYAxis();
 renderXAxis();
-</code></pre><p>#####动态调节坐标轴尺度</p><pre><code>&lt;div class=&quot;control-group&quot;&gt;
+</code></pre><h5 id="动态调节坐标轴尺度"><a href="#动态调节坐标轴尺度" class="headerlink" title="动态调节坐标轴尺度"></a>动态调节坐标轴尺度</h5><pre><code>&lt;div class=&quot;control-group&quot;&gt;
     &lt;button onclick=&quot;rescale()&quot;&gt;ReScale&lt;/button&gt;
 &lt;/div&gt;
 var height = 500, 
@@ -950,7 +986,7 @@ renderXAxis();
 renderXGridlines();
 renderYGridlines();
 window.rescale = rescale;
-</code></pre><p>#####单元素动画</p><pre><code>var body = d3.select(&quot;body&quot;), 
+</code></pre><h5 id="单元素动画"><a href="#单元素动画" class="headerlink" title="单元素动画"></a>单元素动画</h5><pre><code>var body = d3.select(&quot;body&quot;), 
     duration = 5000;
 
 body.append(&quot;div&quot;) 
@@ -962,7 +998,7 @@ body.append(&quot;div&quot;)
         .style(&quot;margin-left&quot;, &quot;600px&quot;) 
         .style(&quot;width&quot;, &quot;100px&quot;)
         .style(&quot;height&quot;, &quot;100px&quot;);
-</code></pre><p>#####多元素动画</p><pre><code>var id= 0, 
+</code></pre><h5 id="多元素动画"><a href="#多元素动画" class="headerlink" title="多元素动画"></a>多元素动画</h5><pre><code>var id= 0, 
     data = [], 
     duration = 500, 
     chartHeight = 100, 
@@ -1041,7 +1077,7 @@ d3.select(&quot;body&quot;)
        .style(&quot;top&quot;, chartHeight + &quot;px&quot;)
        .style(&quot;left&quot;, &quot;0px&quot;)
        .style(&quot;width&quot;, chartWidth + &quot;px&quot;);
-</code></pre><p>#####使用缓动函数</p><pre><code>var data = [ 
+</code></pre><h5 id="使用缓动函数"><a href="#使用缓动函数" class="headerlink" title="使用缓动函数"></a>使用缓动函数</h5><pre><code>var data = [ 
         &quot;easeLinear&quot;, &quot;easeCubic&quot;, &quot;easeCubicInOut&quot;, 
         &quot;easeSin&quot;, &quot;easeSinOut&quot;, &quot;easeExp&quot;, &quot;easeCircle&quot;, &quot;easeBack&quot;, 
         &quot;easeBounce&quot;,
@@ -1086,7 +1122,7 @@ setTimeout(function(){
             }
         });
 },3000);
-</code></pre><p>#####使用中间帧计算</p><pre><code>var body = d3.select(&quot;body&quot;), duration = 5000;
+</code></pre><h5 id="使用中间帧计算"><a href="#使用中间帧计算" class="headerlink" title="使用中间帧计算"></a>使用中间帧计算</h5><pre><code>var body = d3.select(&quot;body&quot;), duration = 5000;
 
 body.append(&quot;div&quot;).append(&quot;input&quot;)
     .attr(&quot;type&quot;, &quot;button&quot;)
@@ -1125,7 +1161,7 @@ function valueTween(){
         return interpolate(t);
     };
 }        
-</code></pre><p>#####级联过渡</p><pre><code>var body = d3.select(&quot;body&quot;);
+</code></pre><h5 id="级联过渡"><a href="#级联过渡" class="headerlink" title="级联过渡"></a>级联过渡</h5><pre><code>var body = d3.select(&quot;body&quot;);
 
 function teleport(s){
     s.transition().duration(300) 
@@ -1146,7 +1182,7 @@ body.append(&quot;div&quot;)
         .style(&quot;width&quot;, &quot;80px&quot;)
         .style(&quot;height&quot;, &quot;80px&quot;)
         .call(teleport); 
-</code></pre><p>#####选择性过渡</p><pre><code>var data = [&quot;Cat&quot;, &quot;Dog&quot;, &quot;Cat&quot;, &quot;Dog&quot;, &quot;Cat&quot;, &quot;Dog&quot;, &quot;Cat&quot;, &quot;Dog&quot;],
+</code></pre><h5 id="选择性过渡"><a href="#选择性过渡" class="headerlink" title="选择性过渡"></a>选择性过渡</h5><pre><code>var data = [&quot;Cat&quot;, &quot;Dog&quot;, &quot;Cat&quot;, &quot;Dog&quot;, &quot;Cat&quot;, &quot;Dog&quot;, &quot;Cat&quot;, &quot;Dog&quot;],
     duration = 1500;
 
 d3.select(&quot;body&quot;).selectAll(&quot;div&quot;)
@@ -1170,7 +1206,7 @@ d3.select(&quot;body&quot;).selectAll(&quot;div&quot;)
             .transition() 
             .duration(duration)
                 .style(&quot;left&quot;, &quot;500px&quot;);
-</code></pre><p>#####监听过渡事件</p><pre><code>var body = d3.select(&quot;body&quot;), duration = 3000;
+</code></pre><h5 id="监听过渡事件"><a href="#监听过渡事件" class="headerlink" title="监听过渡事件"></a>监听过渡事件</h5><pre><code>var body = d3.select(&quot;body&quot;), duration = 3000;
 
 var div = body.append(&quot;div&quot;)
         .classed(&quot;box&quot;, true)
@@ -1220,7 +1256,7 @@ countdown.attr(&quot;type&quot;, &quot;button&quot;)
             return customScale(t);
         }
     }); 
-</code></pre><p>#####定时器</p><pre><code>&lt;div class=&quot;control-group&quot;&gt;
+</code></pre><h5 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h5><pre><code>&lt;div class=&quot;control-group&quot;&gt;
     &lt;button onclick=&quot;countup(100)&quot;&gt;
         Start
     &lt;/button&gt;
@@ -1249,7 +1285,7 @@ function reset(){
     countdown.attr(&quot;value&quot;, 0);
 }
 window.reset = reset;
-</code></pre><p>#####svg简单图形</p><pre><code>&lt;style&gt;
+</code></pre><h5 id="svg简单图形"><a href="#svg简单图形" class="headerlink" title="svg简单图形"></a>svg简单图形</h5><pre><code>&lt;style&gt;
   svg line{
       stroke: grey;
       stroke-width: 2;
@@ -1301,7 +1337,7 @@ svg.append(&quot;rect&quot;)
 
 svg.append(&quot;polygon&quot;)
     .attr(&quot;points&quot;, &quot;450,200 500,100 550,200&quot;); 
-</code></pre><p>#####线条生成器</p><pre><code>var width = 500,
+</code></pre><h5 id="线条生成器"><a href="#线条生成器" class="headerlink" title="线条生成器"></a>线条生成器</h5><pre><code>var width = 500,
     height = 500,
     margin = 50,
     x = d3.scaleLinear() 
@@ -1388,7 +1424,7 @@ function quadrantWidth(){
 function quadrantHeight(){
     return height - 2 * margin;
 }  
-</code></pre><p>#####线条插值</p><pre><code>&lt;h4&gt;Interpolation Mode:&lt;/h4&gt;
+</code></pre><h5 id="线条插值"><a href="#线条插值" class="headerlink" title="线条插值"></a>线条插值</h5><pre><code>&lt;h4&gt;Interpolation Mode:&lt;/h4&gt;
 &lt;div class=&quot;control-group&quot;&gt;
     &lt;button onclick=&quot;render(d3.curveLinear)&quot;&gt;d3.curveLinear&lt;/button&gt;
     &lt;button onclick=&quot;render(d3.curveLinearClosed)&quot;&gt;d3.curveLinearClosed&lt;/button&gt;
@@ -1514,7 +1550,7 @@ function quadrantWidth(){
 function quadrantHeight(){
     return height - 2 * margin;
 }
-</code></pre><p>#####更改线条张力</p><p>只有d3.curveCardinal, d3.curveCardinalOpen, d3.curveCardinalClosed可以设置张力</p><pre><code>var width = 500,
+</code></pre><h5 id="更改线条张力"><a href="#更改线条张力" class="headerlink" title="更改线条张力"></a>更改线条张力</h5><p>只有d3.curveCardinal, d3.curveCardinalOpen, d3.curveCardinalClosed可以设置张力</p><pre><code>var width = 500,
     height = 500,
     margin = 30,
     duration = 500,    
@@ -1613,7 +1649,7 @@ function quadrantWidth(){
 function quadrantHeight(){
     return height - 2 * margin;
 }
-</code></pre><p>#####区域生成器</p><pre><code>    var width = 500,
+</code></pre><h5 id="区域生成器"><a href="#区域生成器" class="headerlink" title="区域生成器"></a>区域生成器</h5><pre><code>    var width = 500,
     height = 500,
     margin = 30,
     duration = 500,
@@ -1722,7 +1758,7 @@ function quadrantWidth(){
 function quadrantHeight(){
     return height - 2 * margin;
 }
-</code></pre><p>#####区域插值</p><pre><code>&lt;h4&gt;Interpolation Mode:&lt;/h4&gt;
+</code></pre><h5 id="区域插值"><a href="#区域插值" class="headerlink" title="区域插值"></a>区域插值</h5><pre><code>&lt;h4&gt;Interpolation Mode:&lt;/h4&gt;
 &lt;div class=&quot;control-group&quot;&gt;
     &lt;button onclick=&quot;render(d3.curveLinear)&quot;&gt;d3.curveLinear&lt;/button&gt;
     &lt;button onclick=&quot;render(d3.curveLinearClosed)&quot;&gt;d3.curveLinearClosed&lt;/button&gt;
