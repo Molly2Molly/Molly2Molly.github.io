@@ -1,0 +1,114 @@
+<!-- build time:Wed Jul 08 2020 13:37:23 GMT+0800 (中国标准时间) --><!DOCTYPE html><html lang="zh"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui"><meta name="renderer" content="webkit"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no,email=no,adress=no"><meta name="theme-color" content="#000000"><meta http-equiv="window-target" content="_top"><title>算法与数据结构 | Hexo</title><meta name="description" content="时间复杂度空间复杂度二叉树递归及非递归遍历原始数据：var root = {     val:1,     left:{         val:2,         left:{             val:4,         },         right:{             val:5,         }     },     right:{         val:3,"><meta property="og:type" content="article"><meta property="og:title" content="算法与数据结构"><meta property="og:url" content="https://molly2molly.github.io/算法与数据结构/index.html"><meta property="og:site_name" content="张英姿的博客"><meta property="og:description" content="时间复杂度空间复杂度二叉树递归及非递归遍历原始数据：var root = {     val:1,     left:{         val:2,         left:{             val:4,         },         right:{             val:5,         }     },     right:{         val:3,"><meta property="og:locale" content="zh-Hans"><meta property="og:updated_time" content="2020-07-01T07:41:03.785Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="算法与数据结构"><meta name="twitter:description" content="时间复杂度空间复杂度二叉树递归及非递归遍历原始数据：var root = {     val:1,     left:{         val:2,         left:{             val:4,         },         right:{             val:5,         }     },     right:{         val:3,"><link rel="canonical" href="https://molly2molly.github.io/算法与数据结构/index.html"><link rel="alternate" href="/atom.xml" title="张英姿的博客" type="application/atom+xml"><link rel="icon" href="/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"></head><body class="main-center theme-green" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="slimContent"><div class="navbar-header"><div class="profile-block text-center"><a id="avatar" href="https://github.com/molly2molly" target="_blank"><img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200"></a><h2 id="name" class="hidden-xs hidden-sm">张英姿</h2><h3 id="title" class="hidden-xs hidden-sm hidden-md">前端工程师</h3><small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 苏州, 中国</small></div><div class="search" id="search-form-wrap"><form class="search-form sidebar-form"><div class="input-group"><input type="text" class="search-form-input form-control" placeholder="Search"> <span class="input-group-btn"><button type="submit" class="search-form-submit btn btn-flat" onclick="return!1"><i class="icon icon-search"></i></button></span></div></form><div class="ins-search"><div class="ins-search-mask"></div><div class="ins-search-container"><div class="ins-input-wrapper"><input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech=""> <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="ins-section-wrapper"><div class="ins-section-container"></div></div></div></div></div><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button></div><nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation"><ul class="nav navbar-nav main-nav"><li class="menu-item menu-item-home"><a href="/."><i class="icon icon-home-fill"></i> <span class="menu-title">Home</span></a></li><li class="menu-item menu-item-archives"><a href="/archives"><i class="icon icon-archives-fill"></i> <span class="menu-title">Archives</span></a></li><li class="menu-item menu-item-categories"><a href="/categories"><i class="icon icon-folder"></i> <span class="menu-title">Categories</span></a></li><li class="menu-item menu-item-tags"><a href="/tags"><i class="icon icon-tags"></i> <span class="menu-title">Tags</span></a></li><li class="menu-item menu-item-repository"><a href="/repository"><i class="icon icon-project"></i> <span class="menu-title">Repository</span></a></li><li class="menu-item menu-item-books"><a href="/books"><i class="icon icon-book-fill"></i> <span class="menu-title">Books</span></a></li><li class="menu-item menu-item-links"><a href="/links"><i class="icon icon-friendship"></i> <span class="menu-title">Links</span></a></li><li class="menu-item menu-item-about"><a href="/about"><i class="icon icon-cup-fill"></i> <span class="menu-title">About</span></a></li></ul><ul class="social-links"><li><a href="https://github.com/molly2molly" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li></ul></nav></div></header><aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar"><div class="slimContent"><div class="widget"><h3 class="widget-title">Board</h3><div class="widget-body"><div id="board"><div class="content"><p>欢迎交流与分享经验!</p></div></div></div></div><div class="widget"><h3 class="widget-title">Categories</h3><div class="widget-body"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/others/">others</a><span class="category-list-count">1</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Tags</h3><div class="widget-body"><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-javascript/">es6 javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Tag Cloud</h3><div class="widget-body tagcloud"><a href="/tags/React/" style="font-size:13px">React</a> <a href="/tags/TCP/" style="font-size:13px">TCP</a> <a href="/tags/es6-javascript/" style="font-size:13px">es6 javascript</a> <a href="/tags/javascript/" style="font-size:14px">javascript</a> <a href="/tags/markdown/" style="font-size:13px">markdown</a> <a href="/tags/webpack/" style="font-size:13px">webpack</a></div></div><div class="widget"><h3 class="widget-title">Archive</h3><div class="widget-body"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Recent Posts</h3><div class="widget-body"><ul class="recent-post-list list-unstyled no-thumbnail"><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/test/" class="title">algorithm/test</a></p><p class="item-date"><time datetime="2020-07-08T05:36:49.000Z" itemprop="datePublished">2020-07-08</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/npm与yarn的异同/" class="title">npm与yarn的异同</a></p><p class="item-date"><time datetime="2020-07-06T06:50:24.000Z" itemprop="datePublished">2020-07-06</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/工程/" class="title">工程</a></p><p class="item-date"><time datetime="2020-06-29T23:52:50.000Z" itemprop="datePublished">2020-06-30</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/svg/" class="title">svg</a></p><p class="item-date"><time datetime="2020-06-16T02:20:11.000Z" itemprop="datePublished">2020-06-16</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/" class="title">类与对象</a></p><p class="item-date"><time datetime="2020-06-11T06:08:23.000Z" itemprop="datePublished">2020-06-11</time></p></div></li></ul></div></div></div></aside><main class="main" role="main"><div class="content"><article id="post-算法与数据结构" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting"><div class="article-header"><h1 class="article-title" itemprop="name">算法与数据结构</h1><div class="article-meta"><span class="article-date"><i class="icon icon-calendar-check"></i> <a href="/算法与数据结构/" class="article-date"><time datetime="2019-11-21T06:09:59.000Z" itemprop="datePublished">2019-11-21</time></a></span> <span class="post-comment"><i class="icon icon-comment"></i> <a href="/算法与数据结构/#comments" class="article-comment-link">Comments</a></span></div></div><div class="article-entry marked-body" itemprop="articleBody"><h5 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h5><h5 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h5><h4 id="二叉树递归及非递归遍历"><a href="#二叉树递归及非递归遍历" class="headerlink" title="二叉树递归及非递归遍历"></a>二叉树递归及非递归遍历</h4><p>原始数据：</p><pre><code>var root = {
+    val:1,
+    left:{
+        val:2,
+        left:{
+            val:4,
+        },
+        right:{
+            val:5,
+        }
+    },
+    right:{
+        val:3,
+        left:{
+            val:6,
+        },
+        right:{
+            val:7,
+        }
+    }
+}
+</code></pre><p>递归遍历 - 先序遍历</p><pre><code>function DLR(root) {
+    if(root!=null) {
+        console.log(root.val);
+        DLR(root.left);
+        DLR(root.right);
+    }
+}
+DLR(root); // 1,2,4,5,3,6,7
+</code></pre><p>递归遍历 - 中序遍历</p><pre><code>function LDR(root) {
+    if(root!=null) {
+        LDR(root.left);
+        console.log(root.val);
+        LDR(root.right);
+    }
+}
+LDR(root); // 4,2,5,1,6,3,7
+</code></pre><p>递归遍历 - 后序遍历</p><pre><code>function LRD(root) {
+    if(root!=null) {
+        LRD(root.left);
+        LRD(root.right);
+        console.log(root.val);
+    }
+}
+LRD(root); // 4,5,2,6,7,3,1
+</code></pre><p>非递归遍历 - 前序遍历</p><pre><code>function DLR(root) {
+    var arr=[],res=[];
+    if(root!=null) {
+        arr.push(root);
+    }
+    while(arr.length!=0) {
+        var temp = arr.pop();
+        res.push(temp.val);
+        if(temp.right!=null) {
+            arr.push(temp.right);
+        }
+        if(temp.left!=null) {
+            arr.push(temp.left);
+        }
+    }
+    return res;
+}
+DLR(root); // 1,2,4,5,3,6,7
+</code></pre><p>非递归遍历 - 中序遍历</p><pre><code>function LDR(root) {
+    var arr=[],res=[];
+    while(true) {
+        while(root!=null) {
+            arr.push(root);
+            root=root.left;
+        }
+        //终止条件
+        if(arr.length==0) {
+            break;
+        }
+        var temp = arr.pop();
+        res.push(temp.val);
+        root=temp.right;
+    }
+    return res;
+}
+LDR(root); // 4,2,5,1,6,3,7
+</code></pre><p>非递归遍历 - 后序遍历</p><pre><code>function LRD(root) {
+    var arr=[],res=[];
+    arr.push(root);
+    while(arr.length!=0) {
+        var p = arr.pop();
+        res.push(p.val);
+        if(p.left!=null) {
+            arr.push(p.left);
+        }
+        if(p.right!=null) {
+            arr.push(p.right);
+        }
+    }
+    return res.reverse();
+}
+LRD(root); // 4,5,2,6,7,3,1
+</code></pre><h4 id="归并排序merge-sort-O-nlgn"><a href="#归并排序merge-sort-O-nlgn" class="headerlink" title="归并排序merge sort  O(nlgn)"></a>归并排序merge sort O(nlgn)</h4><ol><li>分：将数据集等分为2半</li><li>治：分别在2个部分用递归的方式继续使用归并排序法</li><li><p>合：将分开的2个部分合并成一个有序的数据集</p><p>Merge sort A[1…N]<br>If n=1 done<br>Recursively sort A[1…[n/2]向上取整] and A[[n/2]向上取整+1…n]<br>Merge 2 sorted lists</p></li></ol><h4 id="辗转相除法（求最大公约数和最小公倍数）"><a href="#辗转相除法（求最大公约数和最小公倍数）" class="headerlink" title="辗转相除法（求最大公约数和最小公倍数）"></a>辗转相除法（求最大公约数和最小公倍数）</h4><p>计算两个非负整数 p 和 q 的最大公约数:若 q 是 0，则最大公约数为 p。否则，将 p 除以 q得到余数r，p和q的最大公约数即为q和 r 的最大公约数。</p><pre><code>while（b不为0）  
+{  
+  temp=a%b；  
+  a=b；  
+  b=temp  
+}  
+最后a即为两数的最大公约数，最大公倍数为： a*b/最大公约数
+</code></pre><h4 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h4><p>Knuth-Morris-Pratt 字符串查找算法，简称为KMP算法，常用于在一个文本串S内查找一个模式串P的出现位置</p><p>甲：abbaabbaaba<br>乙：abbaaba<br>目标：发生不匹配，自身不回退。<br>发现：当在甲的某个字符 c 上发生不匹配时，甲即使回退，最终还是会重新匹配到字符 c 上。<br>甲不回退，乙必须回退地尽可能少，并且乙回退位置的前面那段已经和甲匹配，这样甲才能不用回退。<br>如何找到乙回退的位置？<br>「不匹配发生时，前面匹配的那一小段 abbaab 于我俩是相同的」，甲想，「这样的话，用 abbaab 的头部去匹配 abbaab 的尾部，最长的那段就是答案。」</p><pre><code>abbaab 的头部有 a, ab, abb, abba, abbaa（不包含最后一个字符。称之为「真前缀」）  
+abbaab 的尾部有 b, ab, aab, baab, bbaab（不包含第一个字符。称之为「真后缀」）  
+这样最长匹配是 ab。也就是说甲不回退时，乙需要回退到第三个字符去和甲继续匹配。  
+</code></pre><p>「要计算的内容只和乙有关」，甲想，「那就假设乙在其所有位置上都发生了不匹配，乙在和我匹配前把其所有位置的最长匹配都算出来（算个长度就行），生成一张表，之后我俩发生不匹配时直接查这张表就行。」</p><p>据此，甲总结出了一条规则并告诉了乙：</p><p>所有要与甲匹配的字符串（称之为模式串），必须先自身匹配：对每个子字符串 [0…i]，算出其「相匹配的真前缀与真后缀中，最长的字符串的长度」。</p><pre><code>例如：abababzabababa
+
+列个表手算一下：（最大匹配数为子字符串 [0...i] 的最长匹配的长度）
+
+子字符串　 a b a b a b z a b a b a b a  
+最大匹配数 0 0 1 2 3 4 0 1 2 3 4 5 6 5  
+</code></pre><p>容易看出次大匹配了 4 个（abab），更仔细地观察可以发现，次大匹配必定在最大匹配 ababab 中，所以次大匹配数就是 ababab 的最大匹配数！</p></div><div class="article-footer"><blockquote class="mt-2x"><ul class="post-copyright list-unstyled"><li class="post-copyright-link hidden-xs"><strong>本文链接：</strong> <a href="https://molly2molly.github.io/算法与数据结构/" title="算法与数据结构" target="_blank" rel="external">https://molly2molly.github.io/算法与数据结构/</a></li><li class="post-copyright-license"><strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！</li></ul></blockquote><div class="panel panel-default panel-badger"><div class="panel-body"><figure class="media"><div class="media-left"><a href="https://github.com/molly2molly" target="_blank" class="img-burn thumb-sm visible-lg"><img src="/images/avatar.jpg" class="img-rounded w-full" alt=""></a></div><div class="media-body"><h3 class="media-heading"><a href="https://github.com/molly2molly" target="_blank"><span class="text-dark">张英姿</span><small class="ml-1x">前端工程师</small></a></h3><div>梦里寻他千百度 蓦然回首 那人却在灯火阑珊处</div></div></figure></div></div></div></article><section id="comments"><div id="vcomments"></div></section></div><nav class="bar bar-footer clearfix" data-stick-bottom=""><div class="bar-inner"><ul class="pager pull-left"><li class="prev"><a href="/RESTful/" title="RESTful"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a></li><li class="next"><a href="/file/" title="file"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a></li></ul><button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button><div class="bar-right"><div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div></div></div></nav><div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content donate"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><div class="modal-body"><div class="donate-box"><div class="donate-head"><p>Maybe you could buy me a cup of coffee.</p></div><div class="tab-content"><div role="tabpanel" class="tab-pane fade active in" id="alipay"><div class="donate-payimg"><img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan"></div><p class="text-muted mv">Scan this qrcode</p><p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p></div><div role="tabpanel" class="tab-pane fade" id="wechatpay"><div class="donate-payimg"><img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan"></div><p class="text-muted mv">Scan this qrcode</p><p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p></div></div><div class="donate-footer"><ul class="nav nav-tabs nav-justified" role="tablist"><li role="presentation" class="active"><a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a></li><li role="presentation"><a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a></li></ul></div></div></div></div></div></div></main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter"><ul class="social-links"><li><a href="https://github.com/molly2molly" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li></ul><div class="copyright"><div class="publishby">Theme by <a href="https://github.com/cofess" target="_blank">cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.</div></div></footer><script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script><script>window.jQuery||document.write('<script src="js/jquery.min.js"><\/script>')</script><script src="/js/plugin.min.js"></script><script src="/js/application.js"></script><script>!function(T){var n={TRANSLATION:{POSTS:"Posts",PAGES:"Pages",CATEGORIES:"Categories",TAGS:"Tags",UNTITLED:"(Untitled)"},ROOT_URL:"/",CONTENT_URL:"/content.json"};T.INSIGHT_CONFIG=n}(window)</script><script src="/js/insight.js"></script><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//cdn.jsdelivr.net/npm/valine"></script><script type="text/javascript">var GUEST=["nick","mail","link"],meta="nick,mail,link";meta=meta.split(",").filter(function(e){return GUEST.indexOf(e)>-1}),new Valine({el:"#vcomments",verify:!1,notify:!1,appId:"",appKey:"",placeholder:"Just go go",avatar:"mm",meta:meta,pageSize:"10",visitor:!1})</script></body></html><!-- rebuild by neat -->

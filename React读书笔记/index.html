@@ -1,0 +1,299 @@
+<!-- build time:Wed Jul 08 2020 13:37:23 GMT+0800 (中国标准时间) --><!DOCTYPE html><html lang="zh"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui"><meta name="renderer" content="webkit"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no,email=no,adress=no"><meta name="theme-color" content="#000000"><meta http-equiv="window-target" content="_top"><title>React读书笔记 | Hexo</title><meta name="description" content="virtual DOM没有 React Hook 时的React组件缺点：很难重用有状态的逻辑组件，我们通常希望一个函数只做一件事情，但我们的生命周期钩子函数里通常同时做了很多事情。比如我们需要在componentDidMount中发起ajax请求获取数据，绑定一些事件监听等等，有时候我们还需要在componentDidUpdate做一遍同样的事情，有时还需要在componentWillUnmou"><meta name="keywords" content="React"><meta property="og:type" content="article"><meta property="og:title" content="React读书笔记"><meta property="og:url" content="https://molly2molly.github.io/React读书笔记/index.html"><meta property="og:site_name" content="张英姿的博客"><meta property="og:description" content="virtual DOM没有 React Hook 时的React组件缺点：很难重用有状态的逻辑组件，我们通常希望一个函数只做一件事情，但我们的生命周期钩子函数里通常同时做了很多事情。比如我们需要在componentDidMount中发起ajax请求获取数据，绑定一些事件监听等等，有时候我们还需要在componentDidUpdate做一遍同样的事情，有时还需要在componentWillUnmou"><meta property="og:locale" content="zh-Hans"><meta property="og:updated_time" content="2019-12-18T01:36:25.558Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="React读书笔记"><meta name="twitter:description" content="virtual DOM没有 React Hook 时的React组件缺点：很难重用有状态的逻辑组件，我们通常希望一个函数只做一件事情，但我们的生命周期钩子函数里通常同时做了很多事情。比如我们需要在componentDidMount中发起ajax请求获取数据，绑定一些事件监听等等，有时候我们还需要在componentDidUpdate做一遍同样的事情，有时还需要在componentWillUnmou"><link rel="canonical" href="https://molly2molly.github.io/React读书笔记/index.html"><link rel="alternate" href="/atom.xml" title="张英姿的博客" type="application/atom+xml"><link rel="icon" href="/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"></head><body class="main-center theme-green" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="slimContent"><div class="navbar-header"><div class="profile-block text-center"><a id="avatar" href="https://github.com/molly2molly" target="_blank"><img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200"></a><h2 id="name" class="hidden-xs hidden-sm">张英姿</h2><h3 id="title" class="hidden-xs hidden-sm hidden-md">前端工程师</h3><small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> 苏州, 中国</small></div><div class="search" id="search-form-wrap"><form class="search-form sidebar-form"><div class="input-group"><input type="text" class="search-form-input form-control" placeholder="Search"> <span class="input-group-btn"><button type="submit" class="search-form-submit btn btn-flat" onclick="return!1"><i class="icon icon-search"></i></button></span></div></form><div class="ins-search"><div class="ins-search-mask"></div><div class="ins-search-container"><div class="ins-input-wrapper"><input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech=""> <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="ins-section-wrapper"><div class="ins-section-container"></div></div></div></div></div><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button></div><nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation"><ul class="nav navbar-nav main-nav"><li class="menu-item menu-item-home"><a href="/."><i class="icon icon-home-fill"></i> <span class="menu-title">Home</span></a></li><li class="menu-item menu-item-archives"><a href="/archives"><i class="icon icon-archives-fill"></i> <span class="menu-title">Archives</span></a></li><li class="menu-item menu-item-categories"><a href="/categories"><i class="icon icon-folder"></i> <span class="menu-title">Categories</span></a></li><li class="menu-item menu-item-tags"><a href="/tags"><i class="icon icon-tags"></i> <span class="menu-title">Tags</span></a></li><li class="menu-item menu-item-repository"><a href="/repository"><i class="icon icon-project"></i> <span class="menu-title">Repository</span></a></li><li class="menu-item menu-item-books"><a href="/books"><i class="icon icon-book-fill"></i> <span class="menu-title">Books</span></a></li><li class="menu-item menu-item-links"><a href="/links"><i class="icon icon-friendship"></i> <span class="menu-title">Links</span></a></li><li class="menu-item menu-item-about"><a href="/about"><i class="icon icon-cup-fill"></i> <span class="menu-title">About</span></a></li></ul><ul class="social-links"><li><a href="https://github.com/molly2molly" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li></ul></nav></div></header><aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar"><div class="slimContent"><div class="widget"><h3 class="widget-title">Board</h3><div class="widget-body"><div id="board"><div class="content"><p>欢迎交流与分享经验!</p></div></div></div></div><div class="widget"><h3 class="widget-title">Categories</h3><div class="widget-body"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/D3-js/">D3.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/others/">others</a><span class="category-list-count">1</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Tags</h3><div class="widget-body"><ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6-javascript/">es6 javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Tag Cloud</h3><div class="widget-body tagcloud"><a href="/tags/React/" style="font-size:13px">React</a> <a href="/tags/TCP/" style="font-size:13px">TCP</a> <a href="/tags/es6-javascript/" style="font-size:13px">es6 javascript</a> <a href="/tags/javascript/" style="font-size:14px">javascript</a> <a href="/tags/markdown/" style="font-size:13px">markdown</a> <a href="/tags/webpack/" style="font-size:13px">webpack</a></div></div><div class="widget"><h3 class="widget-title">Archive</h3><div class="widget-body"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li></ul></div></div><div class="widget"><h3 class="widget-title">Recent Posts</h3><div class="widget-body"><ul class="recent-post-list list-unstyled no-thumbnail"><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/test/" class="title">algorithm/test</a></p><p class="item-date"><time datetime="2020-07-08T05:36:49.000Z" itemprop="datePublished">2020-07-08</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/npm与yarn的异同/" class="title">npm与yarn的异同</a></p><p class="item-date"><time datetime="2020-07-06T06:50:24.000Z" itemprop="datePublished">2020-07-06</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/工程/" class="title">工程</a></p><p class="item-date"><time datetime="2020-06-29T23:52:50.000Z" itemprop="datePublished">2020-06-30</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/svg/" class="title">svg</a></p><p class="item-date"><time datetime="2020-06-16T02:20:11.000Z" itemprop="datePublished">2020-06-16</time></p></div></li><li><div class="item-inner"><p class="item-category"></p><p class="item-title"><a href="/" class="title">类与对象</a></p><p class="item-date"><time datetime="2020-06-11T06:08:23.000Z" itemprop="datePublished">2020-06-11</time></p></div></li></ul></div></div></div></aside><main class="main" role="main"><div class="content"><article id="post-React读书笔记" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting"><div class="article-header"><h1 class="article-title" itemprop="name">React读书笔记</h1><div class="article-meta"><span class="article-date"><i class="icon icon-calendar-check"></i> <a href="/React读书笔记/" class="article-date"><time datetime="2019-03-15T06:35:45.000Z" itemprop="datePublished">2019-03-15</time></a></span> <span class="article-category"><i class="icon icon-folder"></i> <a class="article-category-link" href="/categories/React/">React</a></span> <span class="article-tag"><i class="icon icon-tags"></i> <a class="article-tag-link" href="/tags/React/">React</a></span> <span class="post-comment"><i class="icon icon-comment"></i> <a href="/React读书笔记/#comments" class="article-comment-link">Comments</a></span></div></div><div class="article-entry marked-body" itemprop="articleBody"><h5 id="virtual-DOM"><a href="#virtual-DOM" class="headerlink" title="virtual DOM"></a>virtual DOM</h5><h5 id="没有-React-Hook-时的React组件缺点："><a href="#没有-React-Hook-时的React组件缺点：" class="headerlink" title="没有 React Hook 时的React组件缺点："></a>没有 React Hook 时的React组件缺点：</h5><blockquote><ol><li>很难重用有状态的逻辑组件，我们通常希望一个函数只做一件事情，但我们的生命周期钩子函数里通常同时做了很多事情。比如我们需要在componentDidMount中发起ajax请求获取数据，绑定一些事件监听等等，有时候我们还需要在componentDidUpdate做一遍同样的事情，有时还需要在componentWillUnmount中解绑事件监听。当项目变复杂后，这一块的代码也变得不那么直观。</li><li>我们用class来创建react组件时，还有一件很麻烦的事情，就是this的指向问题。为了保证this的指向正确，我们要经常写这样的代码：this.handleClick = this.handleClick.bind(this)，或者是这样的代码: onClick={(e) => this.handleClick(e)}</li><li>无状态组件的形式更方便复用，可独立测试。然而很多时候，我们用function写了一个无状态组件，后来因为需求变动这个组件必须得有自己的state，我们又得把function改成class</li></ol></blockquote><h5 id="在传统的React中，有2种方法可以在组件中共享状态逻辑"><a href="#在传统的React中，有2种方法可以在组件中共享状态逻辑" class="headerlink" title="在传统的React中，有2种方法可以在组件中共享状态逻辑"></a>在传统的React中，有2种方法可以在组件中共享状态逻辑</h5><ol><li>render props</li><li>higher-order component</li></ol><p>render props 指的是一个值为函数的prop来传递需要动态渲染的nodes或组件</p><pre><code>class DataProvider extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { target: &apos;Jammie&apos; };
+  }
+
+  render() {
+    return &lt;div&gt;{this.props.render(this.state)}&lt;/div&gt;;
+  }
+}
+
+&lt;DataProvider render={data =&gt; (
+  &lt;Cat target={data.target} /&gt;
+)}/&gt;
+</code></pre><p>虽然这个模式叫Render Props，但不是说非用一个叫render的props不可，习惯上更常写成下面这种</p><pre><code>class DataProvider extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { target: &quot;Jammie&quot; };
+  }
+
+  render() {
+    return &lt;div&gt;{this.props.children(this.state)}&lt;/div&gt;;
+  }
+}
+
+&lt;DataProvider&gt;
+  {data =&gt; (
+    &lt;Cat target={data.target} /&gt;
+  )}
+&lt;/DataProvider&gt;
+</code></pre><p>高阶组件就是一个函数接受一个组件作为参数，经过一系列加工后，最后返回一个新的组件。</p><pre><code>const withUser = WrappedComponent =&gt; {
+  const user = sessionStorage.getItem(&quot;user&quot;);
+  return props =&gt; &lt;WrappedComponent user={user} {...props} /&gt;;
+};
+
+const UserPage = props =&gt; (
+  &lt;div class=&quot;user-container&quot;&gt;
+    &lt;p&gt;My name is {props.user}!&lt;/p&gt;
+  &lt;/div&gt;
+);
+
+export default withUser(UserPage);
+</code></pre><p>这两种模式缺点是会增加代码的层级关系</p><h4 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h4><p>在v16.8以后，还可以使用Hook。</p><p>Hooks are a way to reuse stateful logic, not state itself.</p><h3 id="Rules-of-Hooks"><a href="#Rules-of-Hooks" class="headerlink" title="Rules of Hooks:"></a>Rules of Hooks:</h3><ol><li>Only call Hooks at the top level. Don’t call Hooks inside loops, conditions, or nested functions.</li><li>Only call Hooks from React function components or your own custom Hooks. Don’t call Hooks from regular Javascript functions.</li></ol><p>How does React know which state corresponds to which useState call?<br>The answer is that React relies on the order in which Hooks are called. The order of the Hook calls is the same on every render.</p><p>Custom Hooks are more of a convention than a feature. If a function’s name starts with “use” and it calls other Hooks, we say it is a custom Hook.</p><p>You can write custom Hooks that cover a wide range of use cases like form handling, animation, declarative subscriptions, timers, and probably many more we haven’t considered.</p><h5 id="React-目前提供的Hook"><a href="#React-目前提供的Hook" class="headerlink" title="React 目前提供的Hook:"></a>React 目前提供的Hook:</h5><ol><li>useState</li><li>useEffect</li><li>useContext</li><li>useReducer</li><li>useCallback</li><li>useMemo</li><li>useRef</li><li>useImperativeHandle</li><li>useLayoutEffect</li><li>useDebugValue</li></ol><h5 id="1-useState"><a href="#1-useState" class="headerlink" title="1.useState"></a>1.useState</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const [state, setState] = useState(initialState);  </span><br><span class="line">setState(newState);</span><br></pre></td></tr></table></figure><p>unlike this.setState in a class, updating a state variable in useState always replaces it instead of merging if.</p><h5 id="2-useEffect"><a href="#2-useEffect" class="headerlink" title="2.useEffect"></a>2.useEffect</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState, useEffect &#125; from &apos;react&apos;;</span><br><span class="line"></span><br><span class="line">function Example(props) &#123;</span><br><span class="line">  const [count, setCount] = useState(0);</span><br><span class="line">  </span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);</span><br><span class="line">    return () =&gt; &#123;</span><br><span class="line">      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,[props.friend.id]); //Only re-run the effect if props.friend.id changes. </span><br><span class="line">  // [] only run on mount and unmount</span><br><span class="line">  // [arg1, arg2, arg3] re-run depends on arg1 || arg2 || arg3 changes</span><br><span class="line">	</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;</span><br><span class="line">        Click me</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>useEffect, adds the ability to perform side effects from a function component. It serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes, but unified into a single API.<br>Network requests, manual DOM mutations, and logging are common examples of effects that don’t require a cleanup.<br>Data fetching, setting up a subscription, in these cases, it is important to clean up so that we don’t introduce a memory leak.<br>unlike componentDidMount or componentDidUpdate, effects scheduled with useEffect don’t block the browser from updating the screen.<br>Although useEffect is deferred until after the browser has painted, it’s guaranteed to fire before any new renders.</p><h5 id="3-useContext"><a href="#3-useContext" class="headerlink" title="3.useContext"></a>3.useContext</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// before</span><br><span class="line">const &#123;Provider, Consumer&#125; = React.createContext(defaultValue);</span><br><span class="line">&lt;Provider value=&#123;&#123;theme: &quot;dark&quot;&#125;&#125;&gt;</span><br><span class="line">  &lt;Component /&gt;</span><br><span class="line">&lt;/Provider&gt;</span><br><span class="line">&lt;Consumer&gt;</span><br><span class="line">	&#123;(&#123;theme&#125;) =&gt; &lt;Button theme=&#123;theme&#125; /&gt;&#125;</span><br><span class="line">&lt;/Consumer&gt;</span><br><span class="line"></span><br><span class="line">// after</span><br><span class="line">const MyContext = React.createContext();  </span><br><span class="line">const value = useContext(MyContext);</span><br></pre></td></tr></table></figure><p>when the nearest &lt;MyContext.Provider&gt; above the component updates, this Hook will trigger a rerender with the latest context value passed to that MyContext provider.</p><h5 id="4-useReducer"><a href="#4-useReducer" class="headerlink" title="4.useReducer"></a>4.useReducer</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const [state, dispatch] = useReducer(reducer(state, action) =&gt; newState, initialArg, initReducerLazy);</span><br></pre></td></tr></table></figure><p>an alternative to useState.<br>useReducer is usually preferable to useState when you have complex state logic that involves multiple sub-values or when the next state depends on the previous one.<br>useReducer also lets you optimize performance for components that trigger deep updates because you can pass dispatch down instead of callbacks.</p><pre><code>function init(initialCount) {
+  return {count: initialCount};
+}
+
+function reducer(state, action) {
+  switch (action.type) {
+    case &apos;increment&apos;:
+      return {count: state.count + 1};
+    case &apos;decrement&apos;:
+      return {count: state.count - 1};
+    case &apos;reset&apos;:
+      return init(action.payload);
+    default:
+      throw new Error();
+  }
+}
+
+function Counter({initialCount}) {
+  const [state, dispatch] = useReducer(reducer, initialCount, init);
+  return (
+    &lt;&gt;
+      Count: {state.count}
+      &lt;button
+        onClick={() =&gt; dispatch({type: &apos;reset&apos;, payload: initialCount})}&gt;
+
+        Reset
+      &lt;/button&gt;
+      &lt;button onClick={() =&gt; dispatch({type: &apos;increment&apos;})}&gt;+&lt;/button&gt;
+      &lt;button onClick={() =&gt; dispatch({type: &apos;decrement&apos;})}&gt;-&lt;/button&gt;
+    &lt;/&gt;
+  );
+}
+</code></pre><h5 id="5-useCallback"><a href="#5-useCallback" class="headerlink" title="5.useCallback"></a>5.useCallback</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const memoizedCallback = useCallback(() =&gt; &#123;</span><br><span class="line">	doSomething(a, b);</span><br><span class="line">&#125;, [a, b]); </span><br><span class="line">// returns a memoized callback if a or b change</span><br><span class="line">// if no deps is provided, a new value will be computed on every render.</span><br></pre></td></tr></table></figure><p>useCallback(fn, deps) is equivalent to useMemo(() =&gt; fn, deps)</p><p>A really useful feature of useCallback is that it returns the same function instance if the depencies don’t change.</p><p>Rules : Each function declared within a functional component’s scope must be memoized/cached with useCallback. If it references functions or other variables from the component scope it should list them in its depency list.</p><pre><code>import React, { useState } from &apos;react&apos;;
+
+// Keeps track of all created functions during the app&apos;s life 
+const functions: Set&lt;any&gt; = new Set();
+
+const App = () =&gt; {
+  const [c1, setC1] = useState(0);
+  const [c2, setC2] = useState(0);
+
+  // Cache/memoize the functions - do not create new ones on every rerender
+  const increment1 = useCallback(() =&gt; setC1(c1 + 1), [c1]);
+  const increment2 = useCallback(() =&gt; setC2(c2 + 1), [c2]);
+
+  // Can depend on [c1, c2] instead, but it would be brittle
+    const incrementBoth = useCallback(() =&gt; {
+        increment1();
+        increment2();
+    }, [increment1, increment2]); 
+
+  // Register the functions so we can count them
+  functions.add(increment1);
+  functions.add(increment2);
+
+  return (&lt;div&gt;
+    &lt;div&gt; Counter 1 is {c1} &lt;/div&gt;
+    &lt;div&gt; Counter 2 is {c2} &lt;/div&gt;
+    &lt;br/&gt;
+    &lt;div&gt;
+      &lt;button onClick={increment1}&gt;Increment Counter 1&lt;/button&gt;
+      &lt;button onClick={increment2}&gt;Increment Counter 2&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;br/&gt;
+    &lt;div&gt; Newly Created Functions: {functions.size - 2} &lt;/div&gt;
+  &lt;/div&gt;)
+}
+</code></pre><h5 id="6-useMemo"><a href="#6-useMemo" class="headerlink" title="6.useMemo"></a>6.useMemo</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const memoizedValue = useMemo(() =&gt; computeExpensiveValue(a,b), [a, b]);</span><br></pre></td></tr></table></figure><p>Unlike useCallback, which caches the provided function instance, useMemo invokes the provided function and caches its result.<br>returns a memoized value. useMemo will only recompute the memoized value when one of the dependencies has changed. This optimization helps to avoid expensive calculations on every render.<br>if no array is provided, a new value will be computed on every render.<br>You may rely on useMemo as a performance optimization, not as a semantic guarantee.</p><pre><code>function Parent({ a, b }) {
+  // Only re-rendered if `a` changes:
+  const child1 = useMemo(() =&gt; &lt;Child1 a={a} /&gt;, [a]);
+  // Only re-rendered if `b` changes:
+  const child2 = useMemo(() =&gt; &lt;Child2 b={b} /&gt;, [b]);
+  return (
+    &lt;&gt;
+      {child1}
+      {child2}
+    &lt;/&gt;
+  )
+} 
+</code></pre><h5 id="7-useRef"><a href="#7-useRef" class="headerlink" title="7.useRef"></a>7.useRef</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const refContainer = useRef(initialValue);</span><br></pre></td></tr></table></figure><p>useRef returns a mutable ref object whose .current property is initialized to the passed argument (initialValue). The returned object will persist for the full lifetime of the component.<br>Keep in mind that useRef doesn’t notify you when its content changes. Mutating the .current property doesn’t cause a re-render.<br>you can use useRef as instance variables.</p><pre><code>function TextInputWithFocusButton() {
+  const inputEl = useRef(null);
+  const onButtonClick = () =&gt; {
+    // `current` points to the mounted text input element
+    inputEl.current.focus();
+  };
+  return (
+    &lt;&gt;
+      &lt;input ref={inputEl} type=&quot;text&quot; /&gt;
+      &lt;button onClick={onButtonClick}&gt;Focus the input&lt;/button&gt;
+    &lt;/&gt;
+  );
+}
+</code></pre><h5 id="8-useImperativeHandle"><a href="#8-useImperativeHandle" class="headerlink" title="8.useImperativeHandle"></a>8.useImperativeHandle</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useImperativeHandle(ref, createHandle, [deps]);</span><br></pre></td></tr></table></figure><p>useImperativeHandle customizes the instance value that is exposed to parent components when using ref.</p><pre><code>function FancyInput(props, ref) {
+  const inputRef = useRef();
+  useImperativeHandle(ref, () =&gt; ({
+    focus: () =&gt; {
+      inputRef.current.focus();
+    }
+  }));
+  return &lt;input ref={inputRef} ... /&gt;;
+}
+FancyInput = forwardRef(FancyInput);
+
+// use
+this.ref = React.createRef();
+&lt;FancyInput ref={this.ref} /&gt;
+&lt;button onClick={()=&gt;{this.ref.current.focus()}} /&gt;
+</code></pre><p>In this example, a parent component that renders<fancyinput ref="{fancyInputRef}">would be able to call fancyInputRef.current.focus().</fancyinput></p><h5 id="9-useLayoutEffect"><a href="#9-useLayoutEffect" class="headerlink" title="9.useLayoutEffect"></a>9.useLayoutEffect</h5><p>The signature is identical to useEffect, but it fires synchronously after all DOM mutations.</p><h5 id="10-useDebugValue"><a href="#10-useDebugValue" class="headerlink" title="10.useDebugValue"></a>10.useDebugValue</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useDebugValue(value, value=&gt;&#123; return formatValue;&#125;);</span><br></pre></td></tr></table></figure><p>useDebugValue can be used to display a label for custom hooks in React DevTools.</p><pre><code>function useFriendStatus(friendID) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  // ...
+
+  // Show a label in DevTools next to this Hook
+  // e.g. &quot;FriendStatus: Online&quot;
+  useDebugValue(isOnline ? &apos;Online&apos; : &apos;Offline&apos;);
+
+  return isOnline;
+} 
+</code></pre><hr><pre><code>function ProductPage({ productId }) {
+  // ✅ Wrap with useCallback to avoid change on every render
+  const fetchProduct = useCallback(() =&gt; {
+    // ... Does something with productId ...
+  }, [productId]); // ✅ All useCallback dependencies are specified
+
+  return &lt;ProductDetails fetchProduct={fetchProduct} /&gt;;
+}
+
+function ProductDetails({ fetchProduct })
+  useEffect(() =&gt; {
+    fetchProduct();
+  }, [fetchProduct]); // ✅ All useEffect dependencies are specified
+  // ...
+}
+</code></pre><hr><pre><code>function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() =&gt; {
+    const id = setInterval(() =&gt; {
+      setCount(c =&gt; c + 1); // ✅ This doesn&apos;t depend on `count` variable outside
+    }, 1000);
+    return () =&gt; clearInterval(id);
+  }, []); // ✅ Our effect doesn&apos;t use any variables in the component scope
+
+  return &lt;h1&gt;{count}&lt;/h1&gt;;
+}
+</code></pre><h5 id="How-to-create-expensive-objects-lazily"><a href="#How-to-create-expensive-objects-lazily" class="headerlink" title="How to create expensive objects lazily?"></a>How to create expensive objects lazily?</h5><pre><code> // 1. 方法1
+function Table(props) {
+  // ✅ createRows() is only called once
+  const [rows, setRows] = useState(() =&gt; createRows(props.count));
+  // ...
+}
+
+// 2. 方法2
+function Image(props) {
+  const ref = useRef(null);
+
+  // ✅ IntersectionObserver is created lazily once, this avoids creating an expensive object until it&apos;s truly needed for the first time.
+  function getObserver() {
+    if (ref.current === null) {
+      ref.current = new IntersectionObserver(onIntersect);
+    }
+    return ref.current;
+  }
+
+  // When you need it, call getObserver()
+  // ...
+}
+</code></pre><p>How to avoid passing callbacks down?<br>in large componet trees, an alternative we recommend is to pass down a dispatch function from useReducer via context</p><pre><code>const TodosDispatch = React.createContext(null);
+
+function TodosApp() {
+  // Note: `dispatch` won&apos;t change between re-renders
+  const [todos, dispatch] = useReducer(todosReducer);
+
+  return (
+    &lt;TodosDispatch.Provider value={dispatch}&gt;
+      &lt;DeepTree todos={todos} /&gt;
+    &lt;/TodosDispatch.Provider&gt;
+  );
+}
+
+// any child in the tree inside TodosApp can use the dispatch function to pass actions up to TodosApp
+function DeepChild(props) {
+  // If we want to perform an action, we can get dispatch from context.
+  const dispatch = useContext(TodosDispatch);
+
+  function handleClick() {
+    dispatch({ type: &apos;add&apos;, text: &apos;hello&apos; });
+  }
+
+  return (
+    &lt;button onClick={handleClick}&gt;Add todo&lt;/button&gt;
+  );
+}
+</code></pre><p>useReducer vs Redux</p><ol><li>useReducer has two ingredients missing from Redux to make it one and global.</li></ol><p>One: First, there is no native feature (yet) which combines all reducers to one ultimate reducer. Redux is offering this feature, but in plain React we would have to implement it ourselves. Only if we were able to combine all state containers form all useReducer hooks, we could speak of one state container.</p><p>Global: Second, every useReducer comes with its own dispatch function. There is no native feature (yet) which combines all dispatch functions to one dispatch function. Redux provides one dispatch function that consumes any action dedicated for any reducer function. The dispatch function from useReducer, in contrast, only deals with action that are specified by the reducer function to be consumed.</p><ol start="2"><li>no middleware with useReducer</li></ol><p>模拟整个生命周期中只运行一次的方法</p><pre><code>useMemo(() =&gt; {
+  // execute only once
+}, []);
+</code></pre><p>模拟shouldComponentUpdate</p><pre><code>const areEqual = (prevProps, nextProps) =&gt; {
+   // 返回结果和shouldComponentUpdate正好相反
+   // 访问不了state
+};
+React.memo(Foo, areEqual);
+</code></pre><p>模拟componentDidMount</p><pre><code>useEffect(() =&gt; {
+    // 这里在mount时执行一次
+}, []);
+</code></pre><p>模拟componentDidUpdate</p><pre><code>const mounted = useRef();
+useEffect(() =&gt; {
+  if (!mounted.current) {
+    mounted.current = true;
+  } else {
+    // 这里只在update是执行
+  }
+});
+</code></pre><p>模拟componentDidUnmount</p><pre><code>useEffect(() =&gt; {
+    // 这里在mount时执行一次
+    return () =&gt; {
+       // 这里在unmount时执行一次
+    }
+}, []);
+</code></pre><h4 id="React-Fiber"><a href="#React-Fiber" class="headerlink" title="React Fiber"></a>React Fiber</h4><p>在React Fiber中，一次更新过程会分成多个分片完成，所以完全有可能一个更新任务还没有完成，就被另一个更高优先级的更新过程打断，这时候，优先级高的更新任务会优先处理完，而低优先级更新任务所做的工作则会完全作废，然后等待机会重头再来。<br>因为一个更新过程可能被打断，所以React Fiber一个更新过程被分为两个阶段： render phase and commit phase.<br>在 Render phase 中, React Fiber会找出需要更新哪些DOM，这个阶段是可以被打断的， 而到了第二阶段commit phase， 就一鼓作气把DOM更新完，绝不会被打断。<br>这两个阶段， 分界点是 render 函数。而且， render 函数 也是属于 第一阶段 render phase 的。</p><p>render phase:<br>componentWillMount<br>componentWillReceiveProps<br>shouldComponentUpdate<br>componentWillUpdate</p><p>commit phase:<br>componentDidMount<br>componentDidUpdate<br>componentWillUnmount</p><p>在现有的React中，每个生命周期函数在一个加载或者更新过程中绝对只会被调用一次；在React Fiber中，不再是这样了，第一阶段中的生命周期函数在一次加载和更新过程中可能会被多次调用！。</p><pre><code>纯函数，不能通过this访问到当前组件
+static getDerivedStateFromProps(nextProps, prevState) {
+  //根据nextProps和prevState计算出预期的状态改变，返回结果会被送给setState
+}
+
+componentDidCatch
+
+getDerivedStateFromError
+</code></pre><p>render phase 里产生异常的时候， 会调用 getDerivedStateFromError;</p><p>在 commit phase 里产生异常的时候， 会调用 componentDidCatch。</p><p>严格来说， 其实还有一点区别：</p><p>componentDidCatch 是不会在服务器端渲染的时候被调用的 而 getDerivedStateFromError 会。</p><h4 id="reconciliation"><a href="#reconciliation" class="headerlink" title="reconciliation"></a>reconciliation</h4><h4 id="Suspense"><a href="#Suspense" class="headerlink" title="Suspense"></a>Suspense</h4><h5 id="代码分片"><a href="#代码分片" class="headerlink" title="代码分片"></a>代码分片</h5><pre><code>//    Clock.js
+import React from &quot;react&quot;;
+import moment from &quot;moment&quot;;
+const Clock = () =&gt; &lt;h1&gt;{moment().format(&quot;MMMM Do YYYY, h:mm:ss a&quot;)}&lt;/h1&gt;;
+export default Clock;
+
+// Usage of Clock
+const Clock = React.lazy(() =&gt; {
+  console.log(&quot;start importing Clock&quot;);
+  return import(&quot;./Clock&quot;);
+});
+
+&lt;Suspense fallback={&lt;Loading /&gt;}&gt;
+  { showClock ? &lt;Clock/&gt; : null}
+&lt;/Suspense&gt;
+</code></pre><h5 id="异步获取数据"><a href="#异步获取数据" class="headerlink" title="异步获取数据"></a>异步获取数据</h5><pre><code>import {unstable_createResource as createResource} from &apos;react-cache&apos;;
+
+const resource = createResource(fetchDataApi);
+
+const Foo = () =&gt; {
+  const result = resource.read();
+  return (
+    &lt;div&gt;{result}&lt;/div&gt;
+  );
+
+// ...
+
+&lt;Suspense&gt;
+   &lt;Foo /&gt;
+&lt;/Suskpense&gt;};
+</code></pre></div><div class="article-footer"><blockquote class="mt-2x"><ul class="post-copyright list-unstyled"><li class="post-copyright-link hidden-xs"><strong>本文链接：</strong> <a href="https://molly2molly.github.io/React读书笔记/" title="React读书笔记" target="_blank" rel="external">https://molly2molly.github.io/React读书笔记/</a></li><li class="post-copyright-license"><strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！</li></ul></blockquote><div class="panel panel-default panel-badger"><div class="panel-body"><figure class="media"><div class="media-left"><a href="https://github.com/molly2molly" target="_blank" class="img-burn thumb-sm visible-lg"><img src="/images/avatar.jpg" class="img-rounded w-full" alt=""></a></div><div class="media-body"><h3 class="media-heading"><a href="https://github.com/molly2molly" target="_blank"><span class="text-dark">张英姿</span><small class="ml-1x">前端工程师</small></a></h3><div>梦里寻他千百度 蓦然回首 那人却在灯火阑珊处</div></div></figure></div></div></div></article><section id="comments"><div id="vcomments"></div></section></div><nav class="bar bar-footer clearfix" data-stick-bottom=""><div class="bar-inner"><ul class="pager pull-left"><li class="prev"><a href="/尺寸解密/" title="尺寸解密"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a></li><li class="next"><a href="/Markdown语法简介/" title="Markdown语法简介"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a></li></ul><button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button><div class="bar-right"><div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div></div></div></nav><div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content donate"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><div class="modal-body"><div class="donate-box"><div class="donate-head"><p>Maybe you could buy me a cup of coffee.</p></div><div class="tab-content"><div role="tabpanel" class="tab-pane fade active in" id="alipay"><div class="donate-payimg"><img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan"></div><p class="text-muted mv">Scan this qrcode</p><p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p></div><div role="tabpanel" class="tab-pane fade" id="wechatpay"><div class="donate-payimg"><img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan"></div><p class="text-muted mv">Scan this qrcode</p><p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p></div></div><div class="donate-footer"><ul class="nav nav-tabs nav-justified" role="tablist"><li role="presentation" class="active"><a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a></li><li role="presentation"><a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a></li></ul></div></div></div></div></div></div></main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter"><ul class="social-links"><li><a href="https://github.com/molly2molly" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li></ul><div class="copyright"><div class="publishby">Theme by <a href="https://github.com/cofess" target="_blank">cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.</div></div></footer><script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script><script>window.jQuery||document.write('<script src="js/jquery.min.js"><\/script>')</script><script src="/js/plugin.min.js"></script><script src="/js/application.js"></script><script>!function(T){var n={TRANSLATION:{POSTS:"Posts",PAGES:"Pages",CATEGORIES:"Categories",TAGS:"Tags",UNTITLED:"(Untitled)"},ROOT_URL:"/",CONTENT_URL:"/content.json"};T.INSIGHT_CONFIG=n}(window)</script><script src="/js/insight.js"></script><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//cdn.jsdelivr.net/npm/valine"></script><script type="text/javascript">var GUEST=["nick","mail","link"],meta="nick,mail,link";meta=meta.split(",").filter(function(e){return GUEST.indexOf(e)>-1}),new Valine({el:"#vcomments",verify:!1,notify:!1,appId:"",appKey:"",placeholder:"Just go go",avatar:"mm",meta:meta,pageSize:"10",visitor:!1})</script></body></html><!-- rebuild by neat -->
